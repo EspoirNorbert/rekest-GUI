@@ -34,7 +34,7 @@
             <HBox alignment="CENTER_LEFT">
                <children>
                   <FontAwesomeIconView glyphName="SEARCH" glyphStyle="-fx-fill:#7C8184" size="1.3em" />
-                  <TextField promptText="Recherche" style="-fx-background-color: transparent; -fx-border-color: #D8DBDE;" styleClass="search" HBox.hgrow="ALWAYS">
+                  <TextField promptText="Recherche" style="-fx-background-color: transparent;" styleClass="profil" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="Calibri Light" size="14.0" />
                      </font>
@@ -50,7 +50,7 @@
             <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="85.0" styleClass="btns">
                <children>
                   <FontAwesomeIconView glyphName="DASHBOARD" glyphStyle="-fx-fill:#7C8184" size="1.3em" />
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="200.0" text="Acceuil" textFill="#7c8184">
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="200.0" text="Accueil" textFill="#7c8184">
                      <font>
                         <Font name="Calibri Light" size="15.0" />
                      </font>
