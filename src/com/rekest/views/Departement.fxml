@@ -324,6 +324,7 @@
             <TableView prefHeight="350.0" prefWidth="200.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="Nom" />
+                  <TableColumn prefWidth="75.0" text="Nombre de services" />
               </columns>
                <VBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" />
@@ -339,7 +340,7 @@
                <children>
                   <ButtonBar prefHeight="40.0" prefWidth="200.0">
                     <buttons>
-                      <Button mnemonicParsing="false" style="-fx-background-color: #52A4D1;" text="Ajouter" textFill="WHITE" />
+                      <Button mnemonicParsing="false" style="-fx-background-color: #52A4D1;" text="Détails" textFill="WHITE" />
                         <Button mnemonicParsing="false" style="-fx-background-color: #52A4D1;" text="Modifier" textFill="WHITE" />
                         <Button mnemonicParsing="false" style="-fx-background-color: #52A4D1;" text="Supprimer" textFill="WHITE" />
                     </buttons>
