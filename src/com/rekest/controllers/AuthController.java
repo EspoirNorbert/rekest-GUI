@@ -1,11 +1,9 @@
-package com.rekest.controllers.impl;
-
-import com.rekest.controllers.IController;
+package com.rekest.controllers;
 
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
-public class AuthController implements IController {
+public class AuthController {
 	
     public Stage primaryStage;
 
