@@ -17,6 +17,7 @@ import javafx.beans.property.StringProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
@@ -45,5 +46,11 @@ public class Departement {
 	public static void copy(Departement oldDepartement, Departement newDepartment) {
 		oldDepartement.setNom(newDepartment.getNom());
 	}
+
+	@Override
+	public String toString() {
+		return "Departement [id=" + id + ", nom=" + nom + ", spdNom=" + spdNom + ", services=" + services + "]";
+	}
+	
 	
 }
