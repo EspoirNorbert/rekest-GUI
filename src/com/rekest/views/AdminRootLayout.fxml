@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rekest.views.AdminAcceuilController">
+<BorderPane prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rekest.views.AdminRootLayoutController">
    <left>
       <AnchorPane prefHeight="450.0" prefWidth="200.0" styleClass="sidebar" stylesheets="@css/style.css" BorderPane.alignment="CENTER">
          <children>

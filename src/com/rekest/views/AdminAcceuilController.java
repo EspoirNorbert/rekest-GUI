@@ -1,9 +1,16 @@
 package com.rekest.views;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class AdminAcceuilController {
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.stage.Stage;
+import lombok.Data;
+
+@Data
+public class AdminAcceuilController implements Initializable {
 
 	@FXML
 	private Label countDemandes;
@@ -22,6 +29,23 @@ public class AdminAcceuilController {
 
 	@FXML
 	private Label countServices;
+	
+	private Stage primaryStage;
+	
+	public void setPrimaryStage(Stage primaryStage) {
+		this.primaryStage = primaryStage;
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		countDemandes.setText("0");
+		countDepartements.setText("0");
+		countEmployes.setText("0");
+		countProduits.setText("0");
+		countRoles.setText("0");
+		countServices.setText("0");
+	}
+
 
 
 }

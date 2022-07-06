@@ -7,25 +7,21 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import lombok.Data;
 
 /***
  * MainController principale des windows admin
  * @author hp
- *
  */
+@Data
 public class AdminMainController  {
 	
 	private Stage primaryStage;
-    private AnchorPane rootLayout;
+    private BorderPane rootLayout;
     
     // controllers
 	private AdminRootLayoutController adminRootLayoutController;
-	
-	public AdminMainController() {
-		// TODO Auto-generated constructor stub
-		adminRootLayoutController = new AdminRootLayoutController();
-		System.out.println(adminRootLayoutController);
-	}
+	private AdminAcceuilController adminAcceuilController;
 	
 	 /**
      * Initializes the Admin root layout.
@@ -36,16 +32,17 @@ public class AdminMainController  {
         
         	// Load person overview.
         	FXMLLoader loader = new FXMLLoader ();
-        	loader.setLocation(MainController.class.getResource("Acceuil.fxml"));
-        	rootLayout = loader.load();
+        	loader.setLocation(MainController.class.getResource("AdminRootLayout.fxml"));
+        	rootLayout =  (BorderPane) loader.load();
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             this.primaryStage.setScene(scene);
 
             // Give the controller access to the main app.
-//            adminRootLayoutController = loader.getController();       
-//            adminRootLayoutController.setPrimaryStage(primaryStage);
+            adminRootLayoutController = loader.getController();       
+            adminRootLayoutController.setPrimaryStage(primaryStage);
+            adminRootLayoutController.setRootLayout(rootLayout);
 
             // show windows
             this.primaryStage.show();
@@ -55,4 +52,28 @@ public class AdminMainController  {
         	e.printStackTrace();
         }
     }
+
+    /**
+     * Shows the person overview inside the root layout.
+     */
+    public void showAdminOverview() {
+        try {
+            // Load person overview.    
+        	FXMLLoader loader = new FXMLLoader();
+        	loader.setLocation(MainController.class.getResource("Acceuil.fxml"));
+        	AnchorPane adminOverview = (AnchorPane) loader.load();
+
+            // Set person overview into the center of root layout.
+            rootLayout.setCenter(adminOverview);
+        
+            // Give the controller access to the main app.
+            adminAcceuilController = loader.getController();
+            adminAcceuilController.setPrimaryStage(primaryStage);
+        } catch (IOException e) {
+        	// TODO
+        }
+    }
+    
+    
+    
 }
