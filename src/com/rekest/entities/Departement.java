@@ -42,6 +42,10 @@ public class Departement {
 		this.nom = nom;
 		this.spdNom = new SimpleStringProperty(nom);
 	}
+	
+	public Departement() {}
+	
+	
 
 	public static void copy(Departement oldDepartement, Departement newDepartment) {
 		oldDepartement.setNom(newDepartment.getNom());
@@ -51,6 +55,37 @@ public class Departement {
 	public String toString() {
 		return "Departement [id=" + id + ", nom=" + nom + ", spdNom=" + spdNom + ", services=" + services + "]";
 	}
-	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public StringProperty getSpdNom() {
+		return spdNom;
+	}
+
+	public void setSpdNom(StringProperty spdNom) {
+		this.spdNom = spdNom;
+	}
+
+	public List<Service> getServices() {
+		return services;
+	}
+
+	public void setServices(List<Service> services) {
+		this.services = services;
+	}
 	
 }

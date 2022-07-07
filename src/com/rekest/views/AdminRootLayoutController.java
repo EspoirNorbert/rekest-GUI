@@ -83,7 +83,7 @@ public class AdminRootLayoutController implements Initializable {
 
 	public void setPrimaryStage(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle("Espace d'administration - Admin connecté");
+		this.primaryStage.setTitle("Espace d'administration - Admin connectï¿½");
 	}
 	
 	@FXML
@@ -187,6 +187,11 @@ public class AdminRootLayoutController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		mainController = new MainController();
+	}
+
+	public void setRootLayout(BorderPane rootLayout2) {
+		
+		
 	}
 
 }

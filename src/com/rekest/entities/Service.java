@@ -42,6 +42,38 @@ public class Service {
 		this.nom = nom;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public List<Employe> getEmployes() {
+		return employes;
+	}
+
+	public void setEmployes(List<Employe> employes) {
+		this.employes = employes;
+	}
+
+	public ChefService getChefService() {
+		return chefService;
+	}
+
+	public void setChefService(ChefService chefService) {
+		this.chefService = chefService;
+	}
+
 	public void addEmploye(Employe employe) {
 		employes.add(employe);
 	}

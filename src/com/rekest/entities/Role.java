@@ -19,6 +19,22 @@ public class Role {
 	@Column(name="id_role")
 	private int id;
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getIntitule() {
+		return intitule;
+	}
+
+	public void setIntitule(String intitule) {
+		this.intitule = intitule;
+	}
+
 	private String intitule;
 	
 	public Role(String intitule) {

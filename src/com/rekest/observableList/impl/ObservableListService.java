@@ -45,6 +45,14 @@ public class ObservableListService implements IObservableList<Service> {
         }
 	}
 
+	public ObservableList<Service> getServiceData() {
+		return serviceData;
+	}
+
+	public void setServiceData(ObservableList<Service> serviceData) {
+		this.serviceData = serviceData;
+	}
+
 	@Override
 	public void setData(List<Service> entities) {
 		this.serviceData.setAll(entities);
