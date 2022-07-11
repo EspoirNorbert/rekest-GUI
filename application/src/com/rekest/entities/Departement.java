@@ -20,9 +20,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Data
-@AllArgsConstructor()
-@NoArgsConstructor
 public class Departement {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) 

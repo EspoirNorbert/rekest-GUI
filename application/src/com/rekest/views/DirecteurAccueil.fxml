@@ -40,9 +40,9 @@
                         <Insets />
                      </HBox.margin>
                      <children>
-                        <VBox layoutX="14.0" layoutY="60.0" prefHeight="240.0" prefWidth="417.0">
+                        <VBox layoutX="14.0" layoutY="60.0" prefHeight="240.0" prefWidth="691.0">
                            <children>
-                              <LineChart fx:id="lineChart" prefHeight="214.0" prefWidth="417.0">
+                              <LineChart fx:id="lineChart" prefHeight="240.0" prefWidth="729.0">
                                 <xAxis>
                                   <CategoryAxis side="BOTTOM" />
                                 </xAxis>

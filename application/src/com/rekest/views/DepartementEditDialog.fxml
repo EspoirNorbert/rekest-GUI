@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="215.0" prefWidth="500.0" style="-fx-background-color: #272924;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rekest.views.DepartementEditDialogController">
+<AnchorPane prefHeight="215.0" prefWidth="500.0" style="-fx-background-color: #272924;" stylesheets="@../assets/css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rekest.controllers.DepartementEditDialogController">
    <children>
       <VBox prefHeight="200.0" prefWidth="500.0">
          <children>

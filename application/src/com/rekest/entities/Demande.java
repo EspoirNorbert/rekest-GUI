@@ -16,7 +16,6 @@ import jakarta.persistence.OneToOne;
 import lombok.Data;
 
 @Entity
-@Data
 public class Demande {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) 

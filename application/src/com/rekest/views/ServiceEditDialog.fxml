@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #272924;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rekest.views.ServiceEditDialogController">
+<AnchorPane prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #272924;" stylesheets="@../assets/css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rekest.controllers.ServiceEditDialogController">
    <children>
       <VBox prefHeight="300.0" prefWidth="500.0">
          <children>
@@ -30,7 +30,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="testFieldNom">
+            <TextField fx:id="textFieldNom">
                <VBox.margin>
                   <Insets bottom="25.0" left="10.0" right="10.0" />
                </VBox.margin>
