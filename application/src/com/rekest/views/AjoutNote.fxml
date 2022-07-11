@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="800.0" styleClass="parent" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rekest.views.DemandeController">
+<AnchorPane prefHeight="450.0" prefWidth="800.0" styleClass="parent" stylesheets="@../assets/css/style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rekest.controllers.DemandeController">
    <children>
-      <VBox layoutX="8.0" layoutY="14.0" prefHeight="450.0" prefWidth="840.0" styleClass="rightSide" AnchorPane.bottomAnchor="-14.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="14.0">
+      <VBox layoutX="-3.0" layoutY="-2.0" prefHeight="466.0" prefWidth="840.0" styleClass="rightSide" AnchorPane.bottomAnchor="-14.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="14.0">
          <children>
             <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="800.0" style="-fx-border-color: #D8DBDE;">
                <VBox.margin>

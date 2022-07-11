@@ -1,13 +1,14 @@
 package com.rekest.controllers;
 
-import java.awt.Button;
-import java.awt.TextArea;
-import java.awt.event.ActionEvent;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 
 public class AjoutNoteController implements Initializable {
 	

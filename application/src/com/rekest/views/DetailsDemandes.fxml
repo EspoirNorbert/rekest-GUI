@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="525.0" prefWidth="700.0" style="-fx-background-color: #272924;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rekest.views.EmployeEditDialogController">
+<AnchorPane prefHeight="525.0" prefWidth="700.0" style="-fx-background-color: #272924;" stylesheets="@../assets/css/style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rekest.controllers.EmployeEditDialogController">
    <children>
       <GridPane layoutX="25.0" layoutY="192.0" prefHeight="294.0" prefWidth="650.0" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
          <columnConstraints>
