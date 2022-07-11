@@ -20,16 +20,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="employe_profil", discriminatorType=DiscriminatorType.STRING, length=64)
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Employe {
 	
 	@Id @GeneratedValue(strategy = GenerationType.AUTO) 
@@ -74,11 +68,7 @@ public class Employe {
 	public void addDemandeSoumise (Demande demande) {
 		this.demandes_soumises.add(demande);
 	}
-
-	public static void copy(Employe employe, Employe entity) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	public int getId() {
 		return id;
@@ -151,7 +141,10 @@ public class Employe {
 	public void setService(Service service) {
 		this.service = service;
 	}
-	
-	
+
+	public static void copy(Employe employe, Employe entity) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

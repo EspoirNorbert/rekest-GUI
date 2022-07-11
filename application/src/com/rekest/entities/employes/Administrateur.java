@@ -5,7 +5,6 @@ import jakarta.persistence.Entity;
 
 
 @Entity
-
 public class Administrateur extends Utilisateur {
 	
 	public Administrateur(String nom, String prenom, String telephone, String email, String adresse) {

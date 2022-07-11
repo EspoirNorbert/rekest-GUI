@@ -15,16 +15,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 @Entity
-@Data
-@EqualsAndHashCode(callSuper = true)
-@AllArgsConstructor
-@NoArgsConstructor
 public class Utilisateur extends Employe {
 	
 	protected String login;
@@ -124,9 +116,6 @@ public class Utilisateur extends Employe {
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
-	
-	
-	
 
 
 }

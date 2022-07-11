@@ -15,14 +15,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
 public class Service {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) 
@@ -38,10 +32,17 @@ public class Service {
 	@JoinColumn(name = "id_chefservice")
 	private ChefService chefService;
 	
+	public Service() {}
+	
 	public Service(String nom) {
 		this.nom = nom;
 	}
 
+	public void addEmploye(Employe employe) {
+		employes.add(employe);
+	}
+
+	
 	public int getId() {
 		return id;
 	}
@@ -72,10 +73,6 @@ public class Service {
 
 	public void setChefService(ChefService chefService) {
 		this.chefService = chefService;
-	}
-
-	public void addEmploye(Employe employe) {
-		employes.add(employe);
 	}
 
 	public static void copy(Service service, Service entity) {}

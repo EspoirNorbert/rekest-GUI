@@ -14,10 +14,6 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Transient;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Entity
 public class Departement {
@@ -39,18 +35,13 @@ public class Departement {
 		this.nom = nom;
 		this.spdNom = new SimpleStringProperty(nom);
 	}
-	
-	public Departement() {}
-	
-	
+
+	public Departement() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public static void copy(Departement oldDepartement, Departement newDepartment) {
 		oldDepartement.setNom(newDepartment.getNom());
-	}
-
-	@Override
-	public String toString() {
-		return "Departement [id=" + id + ", nom=" + nom + ", spdNom=" + spdNom + ", services=" + services + "]";
 	}
 
 	public int getId() {
@@ -84,5 +75,6 @@ public class Departement {
 	public void setServices(List<Service> services) {
 		this.services = services;
 	}
+	
 	
 }
