@@ -9,7 +9,6 @@ import com.rekest.observableList.impl.ObservableListDepartement;
 import javafx.collections.ObservableList;
 
 
-
 public class DepartementDao extends HibernateDao {
 
 	private ObservableListDepartement departmentData;
@@ -40,7 +39,6 @@ public class DepartementDao extends HibernateDao {
 	public List<Object> list(Object entityClass) throws DAOException {
 		departmentData.clear();
 		departmentData.addAll(super.list(entityClass));
-		System.out.println("Callinggggggggggggggggggggggggggg");
 		return super.list(entityClass);
 	}
 
@@ -48,6 +46,13 @@ public class DepartementDao extends HibernateDao {
 	@Override
 	public ObservableList<Departement> departementlistObservable() throws DAOException {
 	    return this.departmentData.getData();
+	}
+	
+	@Override
+	public void refresh() {
+		//super.refresh();
+		logger.info("Chargement du refresh");
+		departmentData.refresh();
 	}
 	
 }
