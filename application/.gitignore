@@ -1,5 +1,6 @@
 ### Log file ###
-*.log
+build.fxbuild
+rekest.log
 
 HELP.md
 target/

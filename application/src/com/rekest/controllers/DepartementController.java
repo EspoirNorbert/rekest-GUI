@@ -52,9 +52,7 @@ public class DepartementController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		this.service = FeatureDepartement.getInstance();
-		// Initialize the department table.
         columnNom.setCellValueFactory(cellData -> cellData.getValue().getSpdNom());
-        // add to ObservableList
         addDepartmentObservableListToTheTable();
      }
      
@@ -62,15 +60,15 @@ public class DepartementController implements Initializable {
      	// Add observable list data to the table
      	ObservableList<Departement> departements;
 		try {
-			departements = service.loadDepartementObservableList();
+			departements = service.loadDepartementsObservableList();
 	     	tableViewDepartement.setItems(departements);
-	         //Service.getInstance().refresh();
+	         service.refresh();
 	 		if (departements.size() > 0)
 	 			tableViewDepartement.getSelectionModel().select(0);	
 		} catch (DAOException e) {
 			System.err.println(e.getMessage());
 			Utilitaire.alert(AlertType.INFORMATION, primaryStage,
-        			"Echec de recuperation de données ", 
+        			"Echec de recuperation de donnï¿½es ", 
         			"Data Error", 
         			e.getMessage());
 		}

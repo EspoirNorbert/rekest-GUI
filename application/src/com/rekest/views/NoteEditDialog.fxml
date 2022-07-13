@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="800.0" styleClass="parent" stylesheets="@../assets/css/style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rekest.controllers.DemandeController">
+<AnchorPane prefHeight="450.0" prefWidth="800.0" styleClass="parent" stylesheets="@../assets/css/style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rekest.controllers.NoteEditController">
    <children>
       <VBox layoutX="-3.0" layoutY="-2.0" prefHeight="466.0" prefWidth="840.0" styleClass="rightSide" AnchorPane.bottomAnchor="-14.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="14.0">
          <children>
