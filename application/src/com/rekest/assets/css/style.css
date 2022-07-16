@@ -1,7 +1,5 @@
-
-
 .parent{
-	-fx-background-color: #fff;
+	-fx-background-color: #f1f3f7;
 } 
 
 .search{
@@ -9,10 +7,14 @@
 }
 
 .sidebar{
-	-fx-background-color: #272924;
-	-fx-border-color: #D8DBDE;
-	-fx-border-width: 0.0px 1.0px 0.0px 0.0px;
+	-fx-background-color: #040720;
 } 
+
+.topbar {
+	-fx-background-color: white;
+	-fx-border-color: #040720;
+	-fx-border-width: 5px 0px 0px 0px;
+}
 
 .rightSide{
 	-fx-background-color: #272924;
@@ -20,7 +22,7 @@
 
 .profil {
 	-fx-border-color: #D8DBDE;
-	-fx-border-width: 0.0px 0.0px 1.0px 0.0px;
+	-fx-border-width: 0px 0px 1px 0px;
 }
 
 .jfxbutton{
@@ -28,8 +30,8 @@
 }
 
 .rounded {
-    -fx-border-radius: 20.0 20.0 20.0 20.0;
-    -fx-background-radius: 20.0 20.0 20.0 20.0;
+    -fx-border-radius: 20 20 20 20;
+    -fx-background-radius: 20 20 20 20;
 }
 
 .btns{
@@ -42,7 +44,14 @@
 
 .box {
 	-fx-border-color: #D8DBDE;
-	-fx-border-width: 1.0px 0.0px 0.0px 0.0px;
+	-fx-border-width: 1px 0px 0px 0px;
 }
 
+.rcorners {
+  -fx-border-radius: 25px;
+  -fx-border-color: 2px solid #73AD21;
+}
 
+.authcolor{
+	-fx-background-color: white;
+}

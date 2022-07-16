@@ -77,15 +77,15 @@
                </VBox.margin>
             </HBox>
             <TableView fx:id="tableViewDemandes" prefHeight="400.0" prefWidth="200.0">
-              <columns>
-                <TableColumn fx:id="columnReference" prefWidth="75.0" text="Reference" />
-                <TableColumn fx:id="colomnProduitID" prefWidth="75.0" text="Produit_ID" />
+               <columns>
+                  <TableColumn fx:id="columnReference" prefWidth="75.0" text="Reference" />
+                  <TableColumn fx:id="colomnProduitID" prefWidth="75.0" text="Produit_ID" />
                   <TableColumn fx:id="columnEmployeID" prefWidth="75.0" text="Employe_ID" />
                   <TableColumn fx:id="columnEmploye" prefWidth="75.0" text="Employe" />
                   <TableColumn fx:id="columnUtilisateurID" prefWidth="75.0" text="Utilisateur_ID" />
                   <TableColumn fx:id="columnUtilisateur" prefWidth="75.0" text="Utilisateur" />
                   <TableColumn fx:id="columnEtat" prefWidth="75.0" text="Etat" />
-              </columns>
+               </columns>
                <VBox.margin>
                   <Insets bottom="30.0" left="20.0" right="20.0" />
                </VBox.margin>
@@ -106,14 +106,16 @@
                            </font>
                            <graphic>
                               <FontAwesomeIconView glyphName="PLUS" />
-                           </graphic></Button>
+                           </graphic>
+                        </Button>
                         <Button fx:id="btnRejeter" mnemonicParsing="false" onAction="#handleClickedRejecter" text="Rejeter">
                            <font>
                               <Font size="14.0" />
                            </font>
                            <graphic>
                               <FontAwesomeIconView glyphName="TIMES" />
-                           </graphic></Button>
+                           </graphic>
+                        </Button>
                         <Button fx:id="btnValider" layoutX="165.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleClickedValider" text="Valider">
                            <font>
                               <Font size="14.0" />

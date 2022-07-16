@@ -188,6 +188,4 @@ public class AdminRootLayoutController implements Initializable {
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
-
-	
 }

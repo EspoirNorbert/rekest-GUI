@@ -113,6 +113,7 @@ public class Utilitaire {
 			
 			return root;
 		} catch (IOException io) {
+			 io.printStackTrace();
 			  Utilitaire.alert(AlertType.ERROR, null,
 		                "Error", io.getClass() +
 		                "Error while loading fxml file",

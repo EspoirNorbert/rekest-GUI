@@ -25,6 +25,8 @@ public class AuthenticationController implements Initializable {
 	
 	public Stage primaryStage;
 	private AdminMainController adminMainController;
+	private ManagerMainController managerMainController;
+	private GestionnaireMainController gestionnaireMainController;
 
 	@FXML
 	private Button btnConnexion;
@@ -57,13 +59,32 @@ public class AuthenticationController implements Initializable {
 					null, "AddressApp", "About", "Veuillez remplir tous les champs");
 
 		if (login.equals("admin") && password.equals("admin")) {
-			Utilitaire.alert(AlertType.INFORMATION, 
-					null, "AddressApp","Connexion success","Connexion avec success");
+			Utilitaire.alert(AlertType.INFORMATION, null, "AddressApp","Connexion success","Vous allez vous connecter en tant que Admin");
 			this.primaryStage.close();
 			adminMainController = new AdminMainController();
 			adminMainController.initAdminRootLayout(primaryStage);
 			adminMainController.showAdminOverview();
-		} else {
+		} 
+		
+		else if (login.equals("manager") && password.equals("manager")) {
+			Utilitaire.alert(AlertType.INFORMATION, null, "AddressApp","Connexion success",
+					"Vous allez vous connecter en tant que Manager");
+			this.primaryStage.close();
+			managerMainController = new ManagerMainController();
+			managerMainController.initManagerRootLayout(primaryStage);
+			managerMainController.showManagerOverview();
+		}
+		
+		else if (login.equals("gestionnaire") && password.equals("gestionnaire")) {
+			Utilitaire.alert(AlertType.INFORMATION, null, "AddressApp","Connexion success",
+					"Vous allez vous connecter en tant que Gestionnaire");
+			this.primaryStage.close();
+			gestionnaireMainController = new GestionnaireMainController();
+			gestionnaireMainController.initGestionnaireRootLayout(primaryStage);
+			gestionnaireMainController.showGestionnaireOverview();
+		}
+		
+		else   {
 			Utilitaire.alert(AlertType.INFORMATION, 
 					null, 
 					"AddressApp","Echec de connexion","Informations non correctes !");

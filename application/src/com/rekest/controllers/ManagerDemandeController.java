@@ -9,7 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-public class DemandeController {
+public class ManagerDemandeController {
 
     @FXML
     private Button btnCloturer;
@@ -99,6 +99,6 @@ public class DemandeController {
     void handleClickedValider(ActionEvent event) {
 
     }
-    
+
 }
 

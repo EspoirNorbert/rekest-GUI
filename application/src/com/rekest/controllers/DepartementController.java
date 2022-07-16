@@ -24,7 +24,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 
 public class DepartementController implements Initializable {
-
+	
 	@FXML
 	private TableColumn<Departement, String> columnNom;
 	
@@ -51,7 +51,7 @@ public class DepartementController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		this.service = FeatureDepartement.getInstance();
+		//this.service = FeatureDepartement.getInstance();
         columnNom.setCellValueFactory(cellData -> cellData.getValue().getSpdNom());
         addDepartmentObservableListToTheTable();
      }
@@ -60,8 +60,8 @@ public class DepartementController implements Initializable {
      	// Add observable list data to the table
      	ObservableList<Departement> departements;
 		try {
-			departements = service.loadDepartementsObservableList();
-	     	tableViewDepartement.setItems(departements);
+			 departements = service.loadDepartementsObservableList();
+	     	 tableViewDepartement.setItems(departements);
 	         service.refresh();
 	 		if (departements.size() > 0)
 	 			tableViewDepartement.getSelectionModel().select(0);	
@@ -71,8 +71,7 @@ public class DepartementController implements Initializable {
         			"Echec de recuperation de donn�es ", 
         			"Data Error", 
         			e.getMessage());
-		}
-   					
+		}		
  	}
 
 	@FXML
