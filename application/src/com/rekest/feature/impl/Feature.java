@@ -1,12 +1,8 @@
 package com.rekest.feature.impl;
 
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
-import com.github.javafaker.Faker;
-import com.rekest.dao.IDao;
 import com.rekest.dao.impl.HibernateDao;
 import com.rekest.entities.Demande;
 import com.rekest.entities.Departement;
@@ -14,10 +10,6 @@ import com.rekest.entities.Note;
 import com.rekest.entities.Produit;
 import com.rekest.entities.Role;
 import com.rekest.entities.Service;
-import com.rekest.entities.employes.Administrateur;
-import com.rekest.entities.employes.ChefService;
-import com.rekest.entities.employes.Directeur;
-import com.rekest.entities.employes.DirecteurGeneral;
 import com.rekest.entities.employes.Employe;
 import com.rekest.entities.employes.Manager;
 import com.rekest.entities.employes.Utilisateur;
@@ -26,115 +18,25 @@ import com.rekest.feature.IFeature;
 import com.rekest.observableList.impl.ObservableListDemande;
 import com.rekest.observableList.impl.ObservableListDepartement;
 import com.rekest.observableList.impl.ObservableListEmploye;
+import com.rekest.observableList.impl.ObservableListManager;
+import com.rekest.observableList.impl.ObservableListNote;
 import com.rekest.observableList.impl.ObservableListProduit;
 import com.rekest.observableList.impl.ObservableListRole;
 import com.rekest.observableList.impl.ObservableListService;
-import com.rekest.utils.Utilitaire;
+import com.rekest.observableList.impl.ObservableListUtilisateur;
 
 import javafx.collections.ObservableList;
 
-
 public class Feature implements IFeature {
 
-	private static IDao dao = HibernateDao.getCurrentInstance();
-
-	private static IFeature instance = null;
+	
+	private static Feature instance = null;
 	
 	private Feature () {}
 
-	public static IFeature getCurrentInstance () {
+	public static Feature getCurrentInstance () {
 		if (instance == null) instance = new Feature ();
 		return instance;
-	}
-	
-	private static Faker faker = new Faker(Locale.FRANCE);
-
-
-	@Override
-	public void initDepartement() {
-		try {
-			for (int i = 0; i <= 10; i++) {
-				Departement department = 
-						new Departement(faker.commerce().department());
-				dao.save(department);
-			}
-		} catch (DAOException e) {
-			System.err.println(e.getMessage());
-		}
-	}
-
-	@Override
-	public void initEmploye() {
-		try {
-			for (int i = 0; i <= 10; i++) {
-				Employe employe = new Employe(
-						faker.name().lastName(),
-						faker.name().firstName(),
-						faker.phoneNumber().cellPhone(), faker.internet().emailAddress(), faker.address().fullAddress(),
-						null);
-				dao.save(employe);
-			}
-		} catch (DAOException e) {
-			System.err.println(e.getMessage());
-		}
-	}
-
-	@Override
-	public void initAdmin() {
-		try {
-			dao.save(createDefaultAdmin());
-			for (int i = 0; i <= 3; i++) {
-				Administrateur admin = new Administrateur(
-						 faker.name().lastName(),
-						 faker.name().firstName(),
-						faker.phoneNumber().cellPhone(), faker.internet().emailAddress(), faker.address().fullAddress());
-
-				dao.save(admin);
-			}
-		} catch (DAOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	@Override
-	public void initManagers() {
-		try {
-			// List<Manager> managers = new ArrayList<>();
-			for (int i = 0; i <= 10; i++) {
-				ChefService chefService = new ChefService(faker.name().firstName(), faker.name().lastName(),
-						faker.phoneNumber().cellPhone(), faker.internet().emailAddress(), faker.address().fullAddress());
-				Utilitaire.generateLoginAndPassword(chefService);
-				dao.save(chefService);
-				Directeur directeur = new Directeur(faker.name().firstName(), faker.name().lastName(),
-						faker.phoneNumber().cellPhone(), faker.internet().emailAddress(), faker.address().fullAddress());
-				Utilitaire.generateLoginAndPassword(directeur);
-				dao.save(directeur);
-				DirecteurGeneral directeurGeneral = new DirecteurGeneral(faker.name().firstName(),
-						faker.name().lastName(), faker.phoneNumber().cellPhone(), faker.internet().emailAddress(),
-						faker.address().fullAddress());
-				Utilitaire.generateLoginAndPassword(directeurGeneral);
-				dao.save(directeur);
-			}
-		} catch (DAOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	@Override
-	public Administrateur createDefaultAdmin() {
-		Administrateur admin =  new Administrateur("Administrator", "System", "+221771234500", "rekest.app@rekest.sn",
-				"Terrain foyer Rocade Fann Bel Air, BP 10 000 Dakar Liberté – SENEGAL");
-		admin.setLogin("admin");
-		admin.setPassword("admin");
-		return admin;
-	}
-
-	@Override
-	public void initAllEntity() {
-		this.initAdmin();
-		this.initEmploye();
-		this.initManagers();
-		this.initDepartement();
 	}
 	
 	public ObservableListDepartement OLDepartement = new ObservableListDepartement();
@@ -143,570 +45,976 @@ public class Feature implements IFeature {
 	public ObservableListService OLService = new ObservableListService();
 	public ObservableListRole OLRole = new ObservableListRole();
 	public ObservableListDemande OLDemande = new ObservableListDemande();
-	
-	@Override
-	public List<Role> listerRoles () throws DAOException {
+	public ObservableListManager OLManager = new ObservableListManager();
+	public ObservableListNote OLNote = new ObservableListNote();
+	public ObservableListUtilisateur OLUtilisateur = new ObservableListUtilisateur();
 
-		Role truc = new Role();
-		List<Object> objects = HibernateDao.getCurrentInstance ().list ( truc);
-		List<Role> objs = new ArrayList<> ();
-		for (Object obj : objects) {
-			if (obj instanceof Role) {
-				objs.add ( (Role) obj);
-			}
-		}
-		
-		return objs;
-		
-	}
 
 	@Override
-	public List<Role> listerRoles (String whereClause) throws DAOException{
+	public List<Departement> listerDepartements ()   {
 
-		List<Object> objects = HibernateDao.getCurrentInstance ().list ( Role.class, whereClause);
-		List<Role> objs = new ArrayList<> ();
-		for (Object obj : objects) {
-			if (obj instanceof Role) {
-				objs.add ( (Role) obj);
-			}
-		}
-		
-		return objs;
-		
-	}
-
-	@Override
-	public void supprimerRole (Role role) throws DAOException{
-	
-		HibernateDao.getCurrentInstance ().delete ( role);
-		
-	}
-
-	@Override
-	public void modifierRole (Role role) throws DAOException{
-
-
-		 HibernateDao.getCurrentInstance ().update ( role);
-		
-	}
-
-	@Override
-	public void creerRole (Role role) throws DAOException{
-
-		HibernateDao.getCurrentInstance ().save ( role);
-		
-	}
-
-	@Override
-	public Role rechercherRole (String whereClause) throws DAOException{
-
-		return (Role) HibernateDao.getCurrentInstance ().find ( Role.class, whereClause);
-	}
-
-	@Override
-	public Role rechercherRole (Integer primaryKey) throws DAOException {
-
-		Role role = new Role ();
-		return (Role) HibernateDao.getCurrentInstance ().find ( role, primaryKey);
-	}
-	
-	
-	@Override
-	public List<Departement> listerDepartements () throws DAOException   {
-		Departement truc = new Departement();
-		List<Object> objects = HibernateDao.getCurrentInstance ().list ( truc);
+		List<Object> objects;
 		List<Departement> objs = new ArrayList<> ();
-		for (Object obj : objects) {
-			if (obj instanceof Departement) {
-				objs.add ( (Departement) obj);
+		try {
+			objects = HibernateDao.getCurrentInstance ().list ( new Departement());
+			
+			for (Object obj : objects) {
+				if (obj instanceof Departement) {
+					objs.add ( (Departement) obj);
+				}
 			}
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
 		return objs;
 	}
 
 	@Override
-	public List<Departement> listerDepartements (String whereClause) throws DAOException  {
-
-		List<Object> objects = HibernateDao.getCurrentInstance ().list ( Departement.class, whereClause);
+	public List<Departement> listerDepartements (String whereClause)  {
+		
+		List<Object> objects;
 		List<Departement> objs = new ArrayList<> ();
-		for (Object obj : objects) {
-			if (obj instanceof Departement) {
-				objs.add ( (Departement) obj);
+		try {
+			objects = HibernateDao.getCurrentInstance ().list ( Departement.class, whereClause);
+			for (Object obj : objects) {
+				if (obj instanceof Departement) {
+					objs.add ( (Departement) obj);
+				}
 			}
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
-		return objs;
-		
-	}
 
-	@Override
-	public void supprimerDepartement (Departement departement) throws DAOException {
-		
-		  HibernateDao.getCurrentInstance ().delete ( departement);
-		
-	}
-
-	@Override
-	public void modifierDepartement (Departement departement) throws DAOException {
-		
-		  HibernateDao.getCurrentInstance ().update ( departement);
-	}
-
-	@Override
-	public void creerDepartement (Departement departement) throws DAOException  {
-
-		  HibernateDao.getCurrentInstance ().save ( departement);
-		
-	}
-
-	@Override
-	public Departement rechercherDepartement (String whereClause) throws DAOException {
-		
-		return (Departement) HibernateDao.getCurrentInstance ().find ( Departement.class, whereClause);
-	}
-
-	@Override
-	public Departement rechercherDepartement (Integer primaryKey) throws DAOException  {
-
-		Departement dep   = new Departement ();
-		return (Departement) HibernateDao.getCurrentInstance ().find ( dep, primaryKey);
-	}
-	
-	@Override
-	public List<Manager> listerManagers () throws DAOException  {
-		Manager truc = new Manager();
-		List<Object> objects = HibernateDao.getCurrentInstance ().list ( truc);
-		List<Manager> objs = new ArrayList<> ();
-		for (Object obj : objects) {
-			if (obj instanceof Manager) {
-				objs.add ( (Manager) obj);
-			}
-		}
 		
 		return objs;
 	}
 
 	@Override
-	public List<Manager> listerManagers (String whereClause) throws DAOException {
-
-		List<Object> objects = HibernateDao.getCurrentInstance ().list ( Manager.class, whereClause);
-		List<Manager> objs = new ArrayList<> ();
-		for (Object obj : objects) {
-			if (obj instanceof Manager) {
-				objs.add ( (Manager) obj);
-			}
+	public boolean supprimerDepartement (Departement departement)   {
+		 try {
+			HibernateDao.getCurrentInstance ().delete ( departement);
+			loadDepartementsObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
 		}
 		
-		return objs;
-		
 	}
 
 	@Override
-	public void supprimerManager (Manager manager) throws DAOException {
-		
-		HibernateDao.getCurrentInstance ().delete ( manager);
-		
-	}
+	public boolean modifierDepartement (Departement departement)   {
 
-	@Override
-	public void modifierManager (Manager manager) throws DAOException {
-		
-		 HibernateDao.getCurrentInstance ().update ( manager);
-	}
-
-	@Override
-	public void creerManager (Manager manager) throws DAOException {
-
-		 HibernateDao.getCurrentInstance ().save ( manager);
-		
-	}
-
-	@Override
-	public Manager rechercherManager (String whereClause) throws DAOException {
-		
-		return (Manager) HibernateDao.getCurrentInstance ().find ( Manager.class, whereClause);
-	}
-
-	@Override
-	public Manager rechercherManager (Integer primaryKey) throws DAOException {
-
-		Manager manager = new Manager ();
-		return (Manager) HibernateDao.getCurrentInstance ().find ( manager, primaryKey);
-	}
-	
-	@Override
-	public List<Produit> listerProduits () throws DAOException {
-		Produit truc = new Produit();
-		List<Object> objects = HibernateDao.getCurrentInstance ().list ( truc);
-		List<Produit> objs = new ArrayList<> ();
-		for (Object obj : objects) {
-			if (obj instanceof Produit) {
-				objs.add ( (Produit) obj);
-			}
+		try {
+			HibernateDao.getCurrentInstance ().update ( departement);
+			loadDepartementsObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
 		}
-		
-		return objs;
-		
 	}
 
 	@Override
-	public List<Produit> listerProduits (String whereClause) throws DAOException{
-
-		List<Object> objects = HibernateDao.getCurrentInstance ().list ( Produit.class, whereClause);
-		List<Produit> objs = new ArrayList<> ();
-		for (Object obj : objects) {
-			if (obj instanceof Produit) {
-				objs.add ( (Produit) obj);
-			}
+	public boolean creerDepartement (Departement departement)   {
+	
+		try {
+			HibernateDao.getCurrentInstance ().save ( departement);
+			loadDepartementsObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
 		}
-		
-		return objs;
-		
-	}
 
-	@Override
-	public void supprimerProduit (Produit produit) throws DAOException{
-	
-		HibernateDao.getCurrentInstance ().delete ( produit);
 		
 	}
 
-	@Override
-	public void modifierProduit (Produit produit) throws DAOException{
 
-
-		 HibernateDao.getCurrentInstance ().update ( produit);
-		
-	}
-
-	@Override
-	public void creerProduit (Produit produit) throws DAOException{
-
-		HibernateDao.getCurrentInstance ().save ( produit);
-		
-	}
-
-	@Override
-	public Produit rechercherProduit (String whereClause) throws DAOException{
-
-		return (Produit) HibernateDao.getCurrentInstance ().find ( Produit.class, whereClause);
-	}
-
-	@Override
-	public Produit rechercherProduit (Integer primaryKey) throws DAOException {
-
-		Produit prod = new Produit ();
-		return (Produit) HibernateDao.getCurrentInstance ().find ( prod, primaryKey);
-	}
 	
 	@Override
-	public List<Employe> listerEmployes () throws DAOException {
-		Employe e = new Employe();
-		List<Object> objects = HibernateDao.getCurrentInstance ().list ( e);
-		List<Employe> objs = new ArrayList<> ();
-		for (Object obj : objects) {
-			if (obj instanceof Employe) {
-				objs.add ( (Employe) obj);
-			}
+	public Departement rechercherDepartement (String whereClause)   {
+		
+		try {
+			return (Departement) HibernateDao.getCurrentInstance ().find (  Departement.class, whereClause);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
-		return objs;
-		
+		return null;
 	}
 
 	@Override
-	public List<Employe> listerEmployes (String whereClause) throws DAOException{
-
-		List<Object> objects = HibernateDao.getCurrentInstance ().list ( Employe.class, whereClause);
-		List<Employe> objs = new ArrayList<> ();
-		for (Object obj : objects) {
-			if (obj instanceof Employe) {
-				objs.add ( (Employe) obj);
-			}
+	public Departement rechercherDepartement (Integer primaryKey)  {
+		try {
+			return (Departement) HibernateDao.getCurrentInstance ().find ( new Departement ( ) , primaryKey);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		return null;
+	}
+
+
+
+	@Override
+	public boolean activerUtilisateur (Utilisateur utilisateur)   {
 		
-		return objs;
-		
-	}
-
-	@Override
-	public void supprimerEmploye (Employe employe) throws DAOException{
-	
-		HibernateDao.getCurrentInstance ().delete ( employe);
-		
-	}
-
-	@Override
-	public void modifierEmploye (Employe employe) throws DAOException{
-
-
-		 HibernateDao.getCurrentInstance ().update ( employe);
-		
-	}
-
-	@Override
-	public void creerEmploye (Employe employe) throws DAOException{
-
-		HibernateDao.getCurrentInstance ().save ( employe);
-		
-	}
-
-	@Override
-	public Employe rechercherEmploye (String whereClause) throws DAOException{
-
-		return (Employe) HibernateDao.getCurrentInstance ().find ( Employe.class, whereClause);
-	}
-
-	@Override
-	public Employe rechercherEmploye (Integer primaryKey) throws DAOException {
-
-		Employe prod = new Employe ();
-		return (Employe) HibernateDao.getCurrentInstance ().find ( prod, primaryKey);
-	}
-	
-	
-	
-	@Override
-	public List<Service> listerServices () throws DAOException{
-
-		Service truc = new Service();
-		List<Object> objects = HibernateDao.getCurrentInstance ().list ( truc);
-		List<Service> objs = new ArrayList<> ();
-		for (Object obj : objects) {
-			if (obj instanceof Service) {
-				objs.add ( (Service) obj);
-			}
+		try {
+			HibernateDao.getCurrentInstance ().enableAccount (utilisateur);
+			loadUtilisateursObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
 		}
-		
-		return objs;
 	}
 
 	@Override
-	public List<Service> listerServices (String whereClause) throws DAOException{
-
-		List<Object> objects = HibernateDao.getCurrentInstance ().list ( Service.class, whereClause);
-		List<Service> objs = new ArrayList<> ();
-		for (Object obj : objects) {
-			if (obj instanceof Service) {
-				objs.add ( (Service) obj);
-			}
+	public boolean desactiverUtilisateur (Utilisateur utilisateur)   {
+		
+		try {
+			HibernateDao.getCurrentInstance ().disableAccount (utilisateur);
+			loadUtilisateursObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
 		}
-		
-		return objs;
-		
-	}
-
-	@Override
-	public void supprimerService (Service service) throws DAOException{
-		
-		 HibernateDao.getCurrentInstance ().delete ( service);
-		
-	}
-
-	@Override
-	public void modifierService (Service service) throws DAOException {
-		
-		HibernateDao.getCurrentInstance ().update ( service);
-	}
-
-	@Override
-	public void creerService (Service service) throws DAOException{
-
-		 HibernateDao.getCurrentInstance ().save ( service);
-		
-	}
-
-	@Override
-	public Service rechercherService (String whereClause) throws DAOException {
-		
-		return (Service) HibernateDao.getCurrentInstance ().find ( Service.class, whereClause);
-	}
-
-	@Override
-	public Service rechercherService (Integer primaryKey) throws DAOException {
-
-		Service serv = new Service ();
-		return (Service) HibernateDao.getCurrentInstance ().find ( serv, primaryKey);
-	}
-
-	@Override
-	public void activerUtilisateur (Utilisateur utilisateur) throws DAOException {
-		
-		HibernateDao.getCurrentInstance ().enableAccount (utilisateur);
-	
-		
-	}
-
-	@Override
-	public void desactiverUtilisateur (Utilisateur utilisateur) throws DAOException {
-		
-		HibernateDao.getCurrentInstance ().disableAccount (utilisateur);
 	}
 
 	/*
 	@Override
-	public void rafraichirUtilisateur (Utilisateur utilisateur) {
+	public boolean rafraichirUtilisateur (Utilisateur utilisateur) {
 		// TODO Auto-generated method stub
 		return HibernateDao.getCurrentInstance ().;
 	}
 	*/
 
 	@Override
-	public List<Utilisateur> listerUtilisateurs () throws DAOException {
+	public List<Utilisateur> listerUtilisateurs ()   {
 
-		Utilisateur truc = new Utilisateur();
-		List<Object> objects = HibernateDao.getCurrentInstance ().list ( truc);
+		List<Object> objects;
 		List<Utilisateur> objs = new ArrayList<> ();
-		for (Object obj : objects) {
-			if (obj instanceof Utilisateur) {
-				objs.add ( (Utilisateur) obj);
+		try {
+			objects = HibernateDao.getCurrentInstance ().list ( new Utilisateur());
+			
+			for (Object obj : objects) {
+				if (obj instanceof Utilisateur) {
+					objs.add ( (Utilisateur) obj);
+				}
 			}
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		return objs;
+	}
+
+	@Override
+	public List<Utilisateur> listerUtilisateurs (String whereClause)  {
+		
+		List<Object> objects;
+		List<Utilisateur> objs = new ArrayList<> ();
+		try {
+			objects = HibernateDao.getCurrentInstance ().list ( Utilisateur.class, whereClause);
+			for (Object obj : objects) {
+				if (obj instanceof Utilisateur) {
+					objs.add ( (Utilisateur) obj);
+				}
+			}
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
 		
 		return objs;
 	}
 
 	@Override
-	public List<Utilisateur> listerUtilisateurs (String whereClause) throws DAOException{
-		
-		List<Object> objects = HibernateDao.getCurrentInstance ().list ( Utilisateur.class, whereClause);
-		List<Utilisateur> objs = new ArrayList<> ();
-		for (Object obj : objects) {
-			if (obj instanceof Utilisateur) {
-				objs.add ( (Utilisateur) obj);
-			}
+	public boolean supprimerUtilisateur (Utilisateur utilisateur)   {
+		 try {
+			HibernateDao.getCurrentInstance ().delete ( utilisateur);
+			loadUtilisateursObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
 		}
+		
+	}
+
+	@Override
+	public boolean modifierUtilisateur (Utilisateur utilisateur)   {
+
+		try {
+			HibernateDao.getCurrentInstance ().update ( utilisateur);
+			loadUtilisateursObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean creerUtilisateur (Utilisateur utilisateur)   {
+	
+		try {
+			HibernateDao.getCurrentInstance ().save ( utilisateur);
+			loadUtilisateursObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+
+		
+	}
+
+
+	
+	@Override
+	public Utilisateur rechercherUtilisateur (String whereClause)   {
+		
+		try {
+			return (Utilisateur) HibernateDao.getCurrentInstance ().find (  Utilisateur.class, whereClause);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public Utilisateur rechercherUtilisateur (Integer primaryKey)  {
+		try {
+			return (Utilisateur) HibernateDao.getCurrentInstance ().find ( new Utilisateur ( ) , primaryKey);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Role> listerRoles ()   {
+
+		List<Object> objects;
+		List<Role> objs = new ArrayList<> ();
+		try {
+			objects = HibernateDao.getCurrentInstance ().list ( new Role());
+			
+			for (Object obj : objects) {
+				if (obj instanceof Role) {
+					objs.add ( (Role) obj);
+				}
+			}
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return objs;
+	}
+
+	@Override
+	public List<Role> listerRoles (String whereClause)  {
+		
+		List<Object> objects;
+		List<Role> objs = new ArrayList<> ();
+		try {
+			objects = HibernateDao.getCurrentInstance ().list ( Role.class, whereClause);
+			for (Object obj : objects) {
+				if (obj instanceof Role) {
+					objs.add ( (Role) obj);
+				}
+			}
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
 		
 		return objs;
 	}
 
 	@Override
-	public void supprimerUtilisateur (Utilisateur utilisateur) throws DAOException {
-		 HibernateDao.getCurrentInstance ().delete ( utilisateur);
+	public boolean supprimerRole (Role role)   {
+		 try {
+			HibernateDao.getCurrentInstance ().delete ( role);
+			loadRoleObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 		
 	}
 
 	@Override
-	public void modifierUtilisateur (Utilisateur utilisateur) throws DAOException {
+	public boolean modifierRole (Role role)   {
 
-		HibernateDao.getCurrentInstance ().update ( utilisateur);
+		try {
+			HibernateDao.getCurrentInstance ().update ( role);
+			loadRoleObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	@Override
-	public void creerUtilisateur (Utilisateur utilisateur) throws DAOException {
+	public boolean creerRole (Role role)   {
 	
-		HibernateDao.getCurrentInstance ().save ( utilisateur);
+		try {
+			HibernateDao.getCurrentInstance ().save ( role);
+			loadRoleObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+
 		
 	}
 
 
 	
 	@Override
-	public Utilisateur rechercherUtilisateur (String whereClause) throws DAOException {
+	public Role rechercherRole (String whereClause)   {
 		
-		return (Utilisateur) HibernateDao.getCurrentInstance ().find (  Utilisateur.class, whereClause);
+		try {
+			return (Role) HibernateDao.getCurrentInstance ().find (  Role.class, whereClause);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
-	public Utilisateur rechercherUtilisateur (Integer primaryKey) throws DAOException{
-		
-		Utilisateur user = new Utilisateur ( null, null);
-		return (Utilisateur) HibernateDao.getCurrentInstance ().find ( user , primaryKey);
+	public Role rechercherRole (Integer primaryKey)  {
+		try {
+			return (Role) HibernateDao.getCurrentInstance ().find ( new Role ( ) , primaryKey);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
+
+	@Override
+	public List<Manager> listerManagers ()   {
+
+		List<Object> objects;
+		List<Manager> objs = new ArrayList<> ();
+		try {
+			objects = HibernateDao.getCurrentInstance ().list ( new Manager());
+			
+			for (Object obj : objects) {
+				if (obj instanceof Manager) {
+					objs.add ( (Manager) obj);
+				}
+			}
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return objs;
+	}
+
+	@Override
+	public List<Manager> listerManagers (String whereClause)  {
+		
+		List<Object> objects;
+		List<Manager> objs = new ArrayList<> ();
+		try {
+			objects = HibernateDao.getCurrentInstance ().list ( Manager.class, whereClause);
+			for (Object obj : objects) {
+				if (obj instanceof Manager) {
+					objs.add ( (Manager) obj);
+				}
+			}
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return objs;
+	}
+
+	@Override
+	public boolean supprimerManager (Manager manager)   {
+		 try {
+			HibernateDao.getCurrentInstance ().delete ( manager);
+			loadManagerObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+
+	@Override
+	public boolean modifierManager (Manager manager)   {
+
+		try {
+			HibernateDao.getCurrentInstance ().update ( manager);
+			loadManagerObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean creerManager (Manager manager)   {
 	
-	
-	
+		try {
+			HibernateDao.getCurrentInstance ().save ( manager);
+			loadManagerObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+
+		
+	}
+
+
 	
 	@Override
-	public List<Note> listerNotes () throws DAOException  {
+	public Manager rechercherManager (String whereClause)   {
+		
+		try {
+			return (Manager) HibernateDao.getCurrentInstance ().find (  Manager.class, whereClause);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public Manager rechercherManager (Integer primaryKey)  {
+		try {
+			return (Manager) HibernateDao.getCurrentInstance ().find ( new Manager ( ) , primaryKey);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Employe> listerEmployes ()   {
+
+		List<Object> objects;
+		List<Employe> objs = new ArrayList<> ();
+		try {
+			objects = HibernateDao.getCurrentInstance ().list ( new Employe());
+			
+			for (Object obj : objects) {
+				if (obj instanceof Employe) {
+					objs.add ( (Employe) obj);
+				}
+			}
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return objs;
+	}
+
+	@Override
+	public List<Employe> listerEmployes (String whereClause)  {
+		
+		List<Object> objects;
+		List<Employe> objs = new ArrayList<> ();
+		try {
+			objects = HibernateDao.getCurrentInstance ().list ( Employe.class, whereClause);
+			for (Object obj : objects) {
+				if (obj instanceof Employe) {
+					objs.add ( (Employe) obj);
+				}
+			}
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
+		
+		return objs;
+	}
+
+	@Override
+	public boolean supprimerEmploye (Employe employe)   {
+		 try {
+			HibernateDao.getCurrentInstance ().delete ( employe);
+			loadEmployesObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			System.err.println("BLEM EMPLOYE");
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+
+	@Override
+	public boolean modifierEmploye (Employe employe)   {
+
+		try {
+			HibernateDao.getCurrentInstance ().update ( employe);
+			loadEmployesObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean creerEmploye (Employe employe)   {
+	
+		try {
+			HibernateDao.getCurrentInstance ().save ( employe);
+			loadEmployesObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+
+		
+	}
+
+
+	
+	@Override
+	public Employe rechercherEmploye (String whereClause)   {
+		
+		try {
+			return (Employe) HibernateDao.getCurrentInstance ().find (  Employe.class, whereClause);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public Employe rechercherEmploye (Integer primaryKey)  {
+		try {
+			return (Employe) HibernateDao.getCurrentInstance ().find ( new Employe ( ) , primaryKey);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Service> listerServices ()   {
+
+		List<Object> objects;
+		List<Service> objs = new ArrayList<> ();
+		try {
+			objects = HibernateDao.getCurrentInstance ().list ( new Service());
+			
+			for (Object obj : objects) {
+				if (obj instanceof Service) {
+					objs.add ( (Service) obj);
+				}
+			}
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return objs;
+	}
+
+	@Override
+	public List<Service> listerServices (String whereClause)  {
+		
+		List<Object> objects;
+		List<Service> objs = new ArrayList<> ();
+		try {
+			objects = HibernateDao.getCurrentInstance ().list ( Service.class, whereClause);
+			for (Object obj : objects) {
+				if (obj instanceof Service) {
+					objs.add ( (Service) obj);
+				}
+			}
+			
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
+		
+		return objs;
+	}
+
+	@Override
+	public boolean supprimerService (Service service)   {
+		 try {
+			HibernateDao.getCurrentInstance ().delete ( service);
+			loadServicesObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+
+	@Override
+	public boolean modifierService (Service service)   {
+
+		try {
+			HibernateDao.getCurrentInstance ().update ( service);
+			loadServicesObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean creerService (Service service)   {
+	
+		try {
+			HibernateDao.getCurrentInstance ().save ( service);
+			loadServicesObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+
+		
+	}
+
+
+	
+	@Override
+	public Service rechercherService (String whereClause)   {
+		
+		try {
+			return (Service) HibernateDao.getCurrentInstance ().find (  Service.class, whereClause);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public Service rechercherService (Integer primaryKey)  {
+		try {
+			return (Service) HibernateDao.getCurrentInstance ().find ( new Service ( ) , primaryKey);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Produit> listerProduits ()   {
+
+		List<Object> objects;
+		List<Produit> objs = new ArrayList<> ();
+		try {
+			objects = HibernateDao.getCurrentInstance ().list ( new Produit());
+			
+			for (Object obj : objects) {
+				if (obj instanceof Produit) {
+					objs.add ( (Produit) obj);
+				}
+			}
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return objs;
+	}
+
+	@Override
+	public List<Produit> listerProduits (String whereClause)  {
+		
+		List<Object> objects;
+		List<Produit> objs = new ArrayList<> ();
+		try {
+			objects = HibernateDao.getCurrentInstance ().list ( Produit.class, whereClause);
+			for (Object obj : objects) {
+				if (obj instanceof Produit) {
+					objs.add ( (Produit) obj);
+				}
+			}
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
+		
+		return objs;
+	}
+
+	@Override
+	public boolean supprimerProduit (Produit produit)   {
+		 try {
+			HibernateDao.getCurrentInstance ().delete ( produit);
+			loadProduitsObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+
+	@Override
+	public boolean modifierProduit (Produit produit)   {
+
+		try {
+			HibernateDao.getCurrentInstance ().update ( produit);
+			loadProduitsObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean creerProduit (Produit produit)   {
+	
+		try {
+			HibernateDao.getCurrentInstance ().save ( produit);
+			loadProduitsObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+
+		
+	}
+
+
+	
+	@Override
+	public Produit rechercherProduit (String whereClause)   {
+		
+		try {
+			return (Produit) HibernateDao.getCurrentInstance ().find (  Produit.class, whereClause);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public Produit rechercherProduit (Integer primaryKey)  {
+		try {
+			return (Produit) HibernateDao.getCurrentInstance ().find ( new Produit ( ) , primaryKey);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public List<Note> listerNotes ()    {
 		Note truc = new Note();
-		List<Object> objects = HibernateDao.getCurrentInstance ().list ( truc);
 		List<Note> objs = new ArrayList<> ();
-		for  (Object obj : objects) {
-			if  (obj instanceof Note) {
-				objs.add (  (Note) obj);
+		List<Object> objects;
+		try {
+			objects = HibernateDao.getCurrentInstance ().list ( truc);
+			for  (Object obj : objects) {
+				if  (obj instanceof Note) {
+					objs.add (  (Note) obj);
+				}
 			}
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
+
 		
 		return objs;
 	}
 
 	@Override
-	public List<Note> listerNotes (String whereClause) throws DAOException {
+	public List<Note> listerNotes (String whereClause)   {
 
-		List<Object> objects = HibernateDao.getCurrentInstance ().list ( Note.class, whereClause);
+		List<Object> objects;
 		List<Note> objs = new ArrayList<> ();
-		for  (Object obj : objects) {
-			if  (obj instanceof Note) {
-				objs.add (  (Note) obj);
+		try {
+			objects = HibernateDao.getCurrentInstance ().list ( Note.class, whereClause);
+			for  (Object obj : objects) {
+				if  (obj instanceof Note) {
+					objs.add (  (Note) obj);
+				}
 			}
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
 		return objs;
 		
 	}
 
 	@Override
-	public void supprimerNote (Note note) throws DAOException {
+	public boolean supprimerNote (Note note)   {
 		
-		HibernateDao.getCurrentInstance ().delete ( note);
+		try {
+			HibernateDao.getCurrentInstance ().delete ( note);
+			loadNoteObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 		
-	}
-
-	@Override
-	public void modifierNote (Note note) throws DAOException {
-		
-		 HibernateDao.getCurrentInstance ().update ( note);
-	}
-
-	@Override
-	public void creerNote (Note note) throws DAOException {
-
-		 HibernateDao.getCurrentInstance ().save ( note);
 		
 	}
 
 	@Override
-	public Note rechercherNote (String whereClause) throws DAOException {
+	public boolean modifierNote (Note note)   {
 		
-		return   (Note) HibernateDao.getCurrentInstance ().find ( Note.class, whereClause);
+		 try {
+			HibernateDao.getCurrentInstance ().update ( note);
+			loadNoteObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		
 	}
 
 	@Override
-	public Note rechercherNote (Integer primaryKey) throws DAOException {
+	public boolean creerNote (Note note)   {
 
-
-		return   (Note) HibernateDao.getCurrentInstance ().find ( Note.class, primaryKey);
+		 try {
+			HibernateDao.getCurrentInstance ().save ( note); 
+			loadNoteObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		
 	}
 
+	@Override
+	public Note rechercherNote (String whereClause)   {
+		
+		try {
+			return   (Note) HibernateDao.getCurrentInstance ().find ( Note.class, whereClause);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public Note rechercherNote (Integer primaryKey)   {
+
+
+		try {
+			return   (Note) HibernateDao.getCurrentInstance ().find ( new Note(), primaryKey);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
-
-	
 	
 	@Override
-	public List<Demande> listerDemandes () throws DAOException  {
-		Demande truc = new Demande();
-		List<Object> objects = HibernateDao.getCurrentInstance ().list ( truc);
+	public List<Demande> listerDemandes ()    {
+		
 		List<Demande> objs = new ArrayList<> ();
-		for  (Object obj : objects) {
-			if  (obj instanceof Demande) {
-				objs.add (  (Demande) obj);
+		List<Object> objects;
+		try {
+			objects = HibernateDao.getCurrentInstance ().list ( new Demande());
+			for  (Object obj : objects) {
+				if  (obj instanceof Demande) {
+					objs.add (  (Demande) obj);
+				}
 			}
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
 		
 		return objs;
 	}
 
 	@Override
-	public List<Demande> listerDemandes (String whereClause) throws DAOException {
+	public List<Demande> listerDemandes (String whereClause)   {
 
-		List<Object> objects = HibernateDao.getCurrentInstance ().list ( Demande.class, whereClause);
+		List<Object> objects;
 		List<Demande> objs = new ArrayList<> ();
-		for  (Object obj : objects) {
-			if  (obj instanceof Demande) {
-				objs.add (  (Demande) obj);
+		try {
+			objects = HibernateDao.getCurrentInstance ().list ( Demande.class, whereClause);
+			
+			for  (Object obj : objects) {
+				if  (obj instanceof Demande) {
+					objs.add (  (Demande) obj);
+				}
 			}
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		return objs;
@@ -714,221 +1022,284 @@ public class Feature implements IFeature {
 	}
 
 	@Override
-	public void supprimerDemande (Demande demande) throws DAOException {
+	public boolean supprimerDemande (Demande demande)   {
 		
-		HibernateDao.getCurrentInstance ().delete ( demande);
-		
-	}
-
-	@Override
-	public void modifierDemande (Demande demande) throws DAOException {
-		
-		 HibernateDao.getCurrentInstance ().update ( demande);
-	}
-
-	@Override
-	public void creerDemande (Demande demande) throws DAOException {
-
-		 HibernateDao.getCurrentInstance ().save ( demande);
+		try {
+			HibernateDao.getCurrentInstance ().delete ( demande);
+			loadDemandesObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 		
 	}
 
 	@Override
-	public Demande rechercherDemande (String whereClause) throws DAOException {
+	public boolean modifierDemande (Demande demande)   {
 		
-		return   (Demande) HibernateDao.getCurrentInstance ().find ( Demande.class, whereClause);
+		 try {
+			HibernateDao.getCurrentInstance ().update ( demande);
+			loadDemandesObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	@Override
-	public Demande rechercherDemande (Integer primaryKey) throws DAOException {
+	public boolean creerDemande (Demande demande)   {
+		 try {
+			HibernateDao.getCurrentInstance ().save ( demande);
+			loadDemandesObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}	
+	}
 
+	@Override
+	public Demande rechercherDemande (String whereClause)   {
+		try {
+			return   (Demande) HibernateDao.getCurrentInstance ().find ( Demande.class, whereClause);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 
-		return   (Demande) HibernateDao.getCurrentInstance ().find ( Demande.class, primaryKey);
+	@Override
+	public Demande rechercherDemande (Integer primaryKey)   {
+		
+		try {
+			return   (Demande) HibernateDao.getCurrentInstance ().find ( new Demande(), primaryKey);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
 	public String getTheDaoImplementationClassname () {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	
 
 	@Override
 	public Integer RetournerNombreDemandesTotal () {
-		// TODO Auto-generated method stub
-		return null;
+		return listerDemandes().size();
 	}
 
 	@Override
 	public Integer RetournerNombreEmployesTotal () {
-		// TODO Auto-generated method stub
-		return null;
+		return listerEmployes().size();
 	}
 
 	@Override
 	public Integer RetournerNombreDepartementsTotal () {
-		// TODO Auto-generated method stub
-		return null;
+		return listerDepartements().size();
 	}
 
 	@Override
 	public Integer RetournerNombreServicesTotal () {
-		// TODO Auto-generated method stub
-		return null;
+		return listerServices().size();
 	}
 
 	@Override
 	public Integer RetournerNombreProduitsTotal () {
-		// TODO Auto-generated method stub
-		return null;
+		return listerProduits().size();
 	}
 	
 	@Override
-	public ObservableList<Role> loadRoleObservableList() throws DAOException {
+	public ObservableList<Role> loadRoleObservableList()   {
 
-		Role truc = new Role();
-		OLRole.addAll(  HibernateDao.getCurrentInstance ().list ( truc ));
+	
+		try {
+			OLRole.clear();
+			OLRole.addAll(  HibernateDao.getCurrentInstance ().list ( new Role() ));
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return OLRole.getData();
 		
 	}
 
 	@Override
-	public ObservableList<Role> getCurrentRolesObservableList() throws DAOException {
-		
-		return OLRole.getData();
-		
-	}
+	public ObservableList<Produit> loadProduitsObservableList()   {
 
-	@Override
-	public ObservableList<Produit> loadProduitsObservableList() throws DAOException {
-
-		Produit truc = new Produit();
-		OLProduit.addAll(  HibernateDao.getCurrentInstance ().list ( truc ));
+		try {
+			OLProduit.clear();
+			OLProduit.addAll(  HibernateDao.getCurrentInstance ().list ( new Produit() ));
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return OLProduit.getData();
 		
 	}
 
 	@Override
-	public ObservableList<Produit> getCurrentProduitsObservableList() throws DAOException {
+	public ObservableList<Service> loadServicesObservableList()   {
 
-		return OLProduit.getData();
-		
-	}
-
-	@Override
-	public ObservableList<Service> loadServicesObservableList() throws DAOException {
-
-		
-		Service truc = new Service();
-		OLService.addAll(  HibernateDao.getCurrentInstance ().list ( truc ));
+		try {
+			OLService.clear();
+			OLService.addAll(  HibernateDao.getCurrentInstance ().list ( new Service() ));
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return OLService.getData();
-		
 	}
 
 	@Override
-	public ObservableList<Service> getCurrentServicesObservableList() throws DAOException {
+	public ObservableList<Departement> loadDepartementsObservableList()   {
 		
-		return OLService.getData();
 		
-	}
-
-	@Override
-	public ObservableList<Departement> loadDepartementsObservableList() throws DAOException {
-		
-		Departement truc = new Departement();
-		OLDepartement.addAll(  HibernateDao.getCurrentInstance ().list ( truc ));
+		try {
+			OLDepartement.clear();
+			OLDepartement.addAll(  HibernateDao.getCurrentInstance ().list ( new Departement() ));
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return OLDepartement.getData();
 	}
 
 	@Override
-	public ObservableList<Departement> getCurrentDepartementsObservableList() throws DAOException {
+	public ObservableList<Demande> loadDemandesObservableList ()  {
 		
-		return OLDepartement.getData();
-		
-	}
-
-	@Override
-	public ObservableList<Demande> loadDemandesObservableList () throws DAOException{
-		
-		Demande truc = new Demande();
-		OLDemande.addAll(  HibernateDao.getCurrentInstance ().list ( truc ));
+		try {
+			OLDemande.clear();
+			OLDemande.addAll(  HibernateDao.getCurrentInstance ().list ( new Demande() ));
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return OLDemande.getData();
 	}
 
 	@Override
-	public ObservableList<Demande> getCurrentDemandesObservableList () throws DAOException{
-		// TODO Auto-generated method stub
-		return OLDemande.getData(); 
-	}
-
-	@Override
-	public ObservableList<Employe> loadEmployesObservableList () throws DAOException{
+	public ObservableList<Employe> loadEmployesObservableList ()  {
 		
-		
-		Employe truc = new Employe();
-		OLEmploye.addAll(  HibernateDao.getCurrentInstance ().list ( truc ));
+		try {
+			OLEmploye.clear();
+			OLEmploye.addAll(  HibernateDao.getCurrentInstance ().list ( new Employe() ));
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return OLEmploye.getData();
 	}
 
-	@Override
-	public ObservableList<Employe> getCurrentEmployesObservableList () throws DAOException{
-		// TODO Auto-generated method stub
-		return OLEmploye.getData(); 
-	}
 
 	@Override
-	public ObservableList<Demande> loadDemandesByServiceObservableList (Service service) throws DAOException{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ObservableList<Demande> getCurrentDemandesByServiceObservableList () throws DAOException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ObservableList<Demande> loadDemandesByDirectionObservableList (Object direction) throws DAOException {
+	public ObservableList<Demande> loadDemandesByServiceObservableList (Service service)  {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 
 	@Override
-	public void repondreDemande (Demande demande, String reponse) throws DAOException  {
-		HibernateDao.getCurrentInstance ().requestResponse (demande, reponse);
+	public ObservableList<Demande> loadDemandesByDirectionObservableList (Object direction)   {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public ObservableList<Manager> loadManagerObservableList() {
 		
+		/*try {
+			OLManager.clear();
+			OLManager.addAll(  HibernateDao.getCurrentInstance ().list ( new Manager() ));
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		
+		return OLManager.getData();
 	}
 
 	@Override
-	public void createEmptyAdressBook() {
-
+	public ObservableList<Note> loadNoteObservableList() {
+		
+		try {
+			OLNote.clear();
+			OLNote.addAll(  HibernateDao.getCurrentInstance ().list ( new Note() ));
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return OLNote.getData();
 	}
 	
 	@Override
-	public void setDemandeList(List<Demande> demandes) throws DAOException {
+	public ObservableList<Utilisateur> loadUtilisateursObservableList() {
 		
-		OLDemande.clear();
-		getCurrentDemandesObservableList().addAll(demandes);    
+		try {
+			OLUtilisateur.clear();
+			OLUtilisateur.addAll(  HibernateDao.getCurrentInstance ().list ( new Utilisateur() ));
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return OLUtilisateur.getData();
 	}
-
-
-
-
-
+	@Override
+	public boolean repondreDemande (Demande demande, String reponse)    {
+		try {
+			HibernateDao.getCurrentInstance ().requestResponse (demande, reponse);
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}	
+	}
 
 	@Override
-	public Object validerIdentifiants(String login, String password) throws DAOException {
-		return HibernateDao.getCurrentInstance().validateCredential( login,  password);
+	public Object validerIdentifiants(String login, String password)   {
+		
+		Object obj = new Object();
+		
+		try {
+			obj = HibernateDao.getCurrentInstance().validateCredential( login,  password);
+			
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return obj;
 	}
 
 	@Override
-	public void associerService(Employe employe, Service service) throws DAOException {
-		HibernateDao.getCurrentInstance().associateService( employe, service) ;
+	public boolean associerService(Employe employe, Service service)   {
+		
+		try {
+			HibernateDao.getCurrentInstance().associateService( employe, service) ;
+			loadEmployesObservableList();
+			return true;
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 		
 	}
+
+
+
 
 
 
@@ -938,37 +1309,37 @@ public class Feature implements IFeature {
  * 
  * 
 	@Override
-	public void setDemandeList (List<Demande> demandes) {
+	public boolean setDemandeList (List<Demande> demandes) {
 		clearDemandeList ();
 		getCurrentDemandeObservableList ().addAll (demandes);    
 	}
 	
 		@Override
-	public void setProduitList (List<Produit> produits) {
+	public boolean setProduitList (List<Produit> produits) {
 		clearProduitList ();
 		getCurrentProduitObservableList ().addAll (produits);    
 	}
 	
 		@Override
-	public void setEmployeList (List<Employe> employes) {
+	public boolean setEmployeList (List<Employe> employes) {
 		clearEmployeList ();
 		getCurrentEmployeObservableList ().addAll (employes);    
 	}
 	
 		@Override
-	public void setServiceList (List<Service> services) {
+	public boolean setServiceList (List<Service> services) {
 		clearServiceList ();
 		getCurrentServiceObservableList ().addAll (services);    
 	}
 		
 		@Override
-	public void setServiceList (List<Service> services) {
+	public boolean setServiceList (List<Service> services) {
 		clearServiceList ();
 		getCurrentServiceObservableList ().addAll (services);    
 	}
 		
 		@Override
-	public void setServiceList (List<Service> services) {
+	public boolean setServiceList (List<Service> services) {
 		clearServiceList ();
 		getCurrentServiceObservableList ().addAll (services);    
 	}

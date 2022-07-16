@@ -3,6 +3,10 @@ package com.rekest.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.rekest.feature.IFeature;
+import com.rekest.feature.impl.Feature;
+import com.rekest.utils.Utilitaire;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -30,18 +34,36 @@ public class AdminOverviewController implements Initializable {
 	
 	private Stage primaryStage;
 	
+	private IFeature service = Feature.getCurrentInstance();
+	
 	public void setPrimaryStage(Stage primaryStage) {
 		this.primaryStage = primaryStage;
+	}
+	
+	public Stage getPrimaryStage() {
+		return primaryStage;
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		countDemandes.setText("0");
-		countDepartements.setText("0");
-		countEmployes.setText("0");
-		countProduits.setText("0");
-		countRoles.setText("0");
-		countServices.setText("0");
+		this.initEntiesCounter();
+	}
+	 		
+	private void initEntiesCounter() {
+		/***
+		 * 0 seront remplacer par Service.getTotal
+		 */
+		Utilitaire.setValueFromLabel(countDemandes, 
+				/*service.RetournerNombreDemandesTotal().toString()*/ "0");
+		Utilitaire.setValueFromLabel(countDepartements, 
+				/*service.RetournerNombreDepartementsTotal().toString()*/ "0");
+		Utilitaire.setValueFromLabel(countEmployes, /*service.RetournerNombreEmployesTotal().toString()*/ "0");
+		Utilitaire.setValueFromLabel(countProduits, /*service.RetournerNombreProduitsTotal().toString()*/ "0");
+		Utilitaire.setValueFromLabel(countRoles,"0");
+		Utilitaire.setValueFromLabel(countServices, /*service.RetournerNombreServicesTotal().toString()*/ "0");
 	}
 	
+	private void refreshEntitiesCounter() {
+		this.initEntiesCounter();
+	}
 }

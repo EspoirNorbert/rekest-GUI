@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -80,6 +81,12 @@ public class AdminRootLayoutController implements Initializable {
 
 	@FXML
 	private Label labelUsername;
+	
+	private Boolean isCurrentPage = false;
+	
+	public void setIsCurrentPage(Boolean isCurrentPage) {
+		this.isCurrentPage = isCurrentPage;
+	}
 
 
 	public void setPrimaryStage(Stage primaryStage) {
@@ -90,11 +97,25 @@ public class AdminRootLayoutController implements Initializable {
 	@FXML
 	void handleClickedAccueil(MouseEvent event) {
 		Utilitaire.loadPageInRootLayout(rootLayout, "AdminOverview");
+		String style = btnAccueil.getStyle().toString();
+		System.out.println("Is pressed : " + btnAccueil.isManaged());
+		if(btnAccueil.isManaged()) {
+			btnAccueil.setStyle("-fx-background-color: #202332;-fx-font-size: 8pt;");
+		} else {
+			btnAccueil.setStyle(style);
+		}
+		
 	}
 
 	@FXML
 	void handleClickedDemande(MouseEvent event) {
 		Utilitaire.loadPageInRootLayout(rootLayout, "Demandes");
+		String style = btnDemande.getStyle().toString();
+		if(btnDemande.isManaged()) {
+			btnDemande.setStyle("-fx-background-color: #202332;-fx-font-size: 8pt;");
+		} else {
+			btnDemande.setStyle(style);
+		}
 	}
 
 	@FXML

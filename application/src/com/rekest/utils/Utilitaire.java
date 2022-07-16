@@ -20,8 +20,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -52,10 +52,6 @@ public class Utilitaire {
 		alert.setTitle(title);
 		alert.setHeaderText(headerText);
 		alert.setContentText(contentText);
-//		Image image = new Image("https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Emojione_1F62D.svg/64px-Emojione_1F62D.svg.png");
-//		ImageView imageView = new ImageView(image);
-		//alert.setGraphic(imageView);
-
 		alert.showAndWait();
 
 		/*
@@ -211,4 +207,13 @@ public class Utilitaire {
         }
 	}
 	
+	public static String getValueFromLabel(Label label) {
+		 return label.getText();
+	}
+	
+	
+	public static void setValueFromLabel(Label label , String value) {
+		 label.setText(value);
+	}
+
 }

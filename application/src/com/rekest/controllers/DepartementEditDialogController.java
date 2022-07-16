@@ -16,6 +16,7 @@ public class DepartementEditDialogController {
 	@FXML
 	private TextField textFieldNom;
 
+	
 	private Stage dialogStage;
 	private Departement departement;
 	private boolean okClicked = false;
