@@ -52,9 +52,9 @@ public class Utilitaire {
 		alert.setTitle(title);
 		alert.setHeaderText(headerText);
 		alert.setContentText(contentText);
-		Image image = new Image("https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Emojione_1F62D.svg/64px-Emojione_1F62D.svg.png");
-		ImageView imageView = new ImageView(image);
-		alert.setGraphic(imageView);
+//		Image image = new Image("https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Emojione_1F62D.svg/64px-Emojione_1F62D.svg.png");
+//		ImageView imageView = new ImageView(image);
+		//alert.setGraphic(imageView);
 
 		alert.showAndWait();
 
