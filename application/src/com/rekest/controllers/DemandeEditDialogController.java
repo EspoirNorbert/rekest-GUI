@@ -11,7 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 
-public class DemandeSoumissionController implements Initializable {
+public class DemandeEditDialogController implements Initializable {
 	
 	 @FXML
 	    private Button btnAnnuler;

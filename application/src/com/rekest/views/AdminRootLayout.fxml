@@ -15,15 +15,19 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rekest.controllers.AdminRootLayoutController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rekest.controllers.AdminRootLayoutController">
    <left>
-      <AnchorPane prefHeight="750.0" prefWidth="300.0" styleClass="sidebar" stylesheets="@../assets/css/style.css" BorderPane.alignment="CENTER">
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="300.0" styleClass="sidebar" stylesheets="@../assets/css/style.css" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="750.4" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.4" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0" styleClass="profil">
+                  <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" styleClass="profil">
                      <children>
-                        <Circle fx:id="circleProfil" fill="#52a4d1" radius="53.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="circleProfil" fill="#52a4d1" radius="45.0" stroke="BLACK" strokeType="INSIDE">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Circle>
                         <Label fx:id="labelUsername" text="Username" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
@@ -33,197 +37,234 @@
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
                         </Label>
                      </children>
                   </VBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
+                  <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0">
                      <children>
-                        <FontAwesomeIconView glyphName="DASHBOARD" glyphStyle="-fx-fill:#7C8184" size="1.3em">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </FontAwesomeIconView>
-                        <Button fx:id="btnAccueil" mnemonicParsing="false" onMouseClicked="#handleClickedAccueil" style="-fx-background-color: transparent;" text="Accueil" textFill="#7c8184">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Button>
+                        <HBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="270.0" styleClass="btns">
+                           <children>
+                              <FontAwesomeIconView glyphName="DASHBOARD" glyphStyle="-fx-fill:#7C8184" size="1.3em">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </FontAwesomeIconView>
+                              <Button fx:id="btnAccueil" mnemonicParsing="false" onMouseClicked="#handleClickedAccueil" style="-fx-background-color: transparent;" text="Accueil" textFill="#7c8184">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="270.0" styleClass="btns">
+                           <children>
+                              <FontAwesomeIconView glyphName="CLONE" glyphStyle="-fx-fill:#7C8184" size="1.3em">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </FontAwesomeIconView>
+                              <Button fx:id="btnDemande" mnemonicParsing="false" onMouseClicked="#handleClickedDemande" style="-fx-background-color: transparent;" text="Demandes" textFill="#7c8184">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="270.0" styleClass="btns">
+                           <children>
+                              <FontAwesomeIconView glyphName="BUILDING" glyphStyle="-fx-fill:#7C8184" size="1.3em">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </FontAwesomeIconView>
+                              <Button fx:id="btnDepartement" mnemonicParsing="false" onMouseClicked="#handleClickedDepartement" style="-fx-background-color: transparent;" text="Départements" textFill="#7c8184">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="270.0" styleClass="btns">
+                           <children>
+                              <FontAwesomeIconView glyphName="USERS" glyphStyle="-fx-fill:#7C8184" size="1.3em">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </FontAwesomeIconView>
+                              <Button fx:id="btnEmploye" mnemonicParsing="false" onMouseClicked="#handleClickedEmploye" style="-fx-background-color: transparent;" text="Employés" textFill="#7c8184">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="270.0" styleClass="btns">
+                           <children>
+                              <FontAwesomeIconView glyphName="USER" glyphStyle="-fx-fill:#7C8184" size="1.3em">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </FontAwesomeIconView>
+                              <Button fx:id="btnParametre" mnemonicParsing="false" onMouseClicked="#handleClickedParametre" style="-fx-background-color: transparent;" text="Profil" textFill="#7c8184">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="270.0" styleClass="btns">
+                           <children>
+                              <FontAwesomeIconView glyphName="LIST" glyphStyle="-fx-fill:#7C8184" size="1.3em">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </FontAwesomeIconView>
+                              <Button fx:id="btnProduit" mnemonicParsing="false" onMouseClicked="#handleClickedProduit" style="-fx-background-color: transparent;" text="Produits" textFill="#7c8184">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="270.0" styleClass="btns">
+                           <children>
+                              <FontAwesomeIconView glyphName="TAG" glyphStyle="-fx-fill:#7C8184" size="1.3em">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </FontAwesomeIconView>
+                              <Button fx:id="btnRole" mnemonicParsing="false" onMouseClicked="#handleClickedRole" style="-fx-background-color: transparent;" text="Rôles" textFill="#7c8184">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="270.0" styleClass="btns">
+                           <children>
+                              <FontAwesomeIconView glyphName="BARS" glyphStyle="-fx-fill:#7C8184" size="1.3em">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </FontAwesomeIconView>
+                              <Button fx:id="btnService" mnemonicParsing="false" onMouseClicked="#handleClickedService" style="-fx-background-color: transparent;" text="Services" textFill="#7c8184">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="270.0" styleClass="btns">
+                           <children>
+                              <FontAwesomeIconView glyphName="USERS-GEARS" glyphStyle="-fx-fill:#7C8184" size="1.3em">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </FontAwesomeIconView>
+                              <Button fx:id="btnUtlisateurs" mnemonicParsing="false" onMouseClicked="#handleClickedService" style="-fx-background-color: transparent;" text="Utilisateurs" textFill="#7c8184">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
                      </children>
-                     <VBox.margin>
-                        <Insets bottom="5.0" top="20.0" />
-                     </VBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="100.0" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
-                     <children>
-                        <FontAwesomeIconView glyphName="CLONE" glyphStyle="-fx-fill:#7C8184" size="1.3em">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </FontAwesomeIconView>
-                        <Button fx:id="btnDemande" mnemonicParsing="false" onMouseClicked="#handleClickedDemande" style="-fx-background-color: transparent;" text="Demandes" textFill="#7c8184">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="140.0" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
-                     <children>
-                        <FontAwesomeIconView glyphName="BUILDING" glyphStyle="-fx-fill:#7C8184" size="1.3em">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </FontAwesomeIconView>
-                        <Button fx:id="btnDepartement" mnemonicParsing="false" onMouseClicked="#handleClickedDepartement" style="-fx-background-color: transparent;" text="Départements" textFill="#7c8184">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="180.0" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
-                     <children>
-                        <FontAwesomeIconView glyphName="USERS" glyphStyle="-fx-fill:#7C8184" size="1.3em">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </FontAwesomeIconView>
-                        <Button fx:id="btnEmploye" mnemonicParsing="false" onMouseClicked="#handleClickedEmploye" style="-fx-background-color: transparent;" text="Employés" textFill="#7c8184">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="220.0" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
-                     <children>
-                        <FontAwesomeIconView glyphName="USER" glyphStyle="-fx-fill:#7C8184" size="1.3em">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </FontAwesomeIconView>
-                        <Button fx:id="btnParametre" mnemonicParsing="false" onMouseClicked="#handleClickedParametre" style="-fx-background-color: transparent;" text="Profil" textFill="#7c8184">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="260.0" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
-                     <children>
-                        <FontAwesomeIconView glyphName="LIST" glyphStyle="-fx-fill:#7C8184" size="1.3em">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </FontAwesomeIconView>
-                        <Button fx:id="btnProduit" mnemonicParsing="false" onMouseClicked="#handleClickedProduit" style="-fx-background-color: transparent;" text="Produits" textFill="#7c8184">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="300.0" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
-                     <children>
-                        <FontAwesomeIconView glyphName="TAG" glyphStyle="-fx-fill:#7C8184" size="1.3em">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </FontAwesomeIconView>
-                        <Button fx:id="btnRole" mnemonicParsing="false" onMouseClicked="#handleClickedRole" style="-fx-background-color: transparent;" text="Rôles" textFill="#7c8184">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="340.0" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
-                     <children>
-                        <FontAwesomeIconView glyphName="BARS" glyphStyle="-fx-fill:#7C8184" size="1.3em">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </FontAwesomeIconView>
-                        <Button fx:id="btnService" mnemonicParsing="false" onMouseClicked="#handleClickedService" style="-fx-background-color: transparent;" text="Services" textFill="#7c8184">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="534.0" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
-                     <children>
-                        <FontAwesomeIconView glyphName="USERS-GEARS" glyphStyle="-fx-fill:#7C8184" size="1.3em">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </FontAwesomeIconView>
-                        <Button fx:id="btnUtlisateurs" mnemonicParsing="false" onMouseClicked="#handleClickedService" style="-fx-background-color: transparent;" text="Utilisateurs" textFill="#7c8184">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Button>
-                     </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </HBox>
+                  </VBox>
                </children>
             </VBox>
          </children>
       </AnchorPane>
    </left>
    <top>
-      <AnchorPane prefHeight="50.0" prefWidth="1500.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1250.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER_RIGHT" prefHeight="50.4" prefWidth="1300.0" styleClass="topbar" stylesheets="@../assets/css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.4" prefWidth="1250.4" styleClass="topbar" stylesheets="@../assets/css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="1137.0">
+                  <HBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="945.0">
                      <children>
                         <ImageView fx:id="imageLogo" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -240,9 +281,9 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="400.0">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="300.0">
                      <children>
-                        <ButtonBar prefHeight="46.0" prefWidth="275.0">
+                        <ButtonBar minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0">
                            <buttons>
                               <Button fx:id="btnNotifications" alignment="CENTER_RIGHT" mnemonicParsing="false" onMouseClicked="#handleClicledNotification" style="-fx-background-color: Transparent;" text="Notifications">
                                  <graphic>
@@ -265,8 +306,14 @@
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
+                                 <padding>
+                                    <Insets right="10.0" />
+                                 </padding>
                               </Button>
                            </buttons>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
                         </ButtonBar>
                      </children>
                   </HBox>
@@ -276,6 +323,9 @@
       </AnchorPane>
    </top>
    <center>
-      <AnchorPane fx:id="anchorPaneCenter" prefHeight="750.0" prefWidth="1200.0" BorderPane.alignment="CENTER" />
+      <AnchorPane fx:id="anchorPaneCenter" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="950.0" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets left="5.0" />
+         </padding></AnchorPane>
    </center>
 </BorderPane>
