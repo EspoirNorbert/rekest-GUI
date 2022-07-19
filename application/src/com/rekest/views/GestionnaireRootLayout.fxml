@@ -17,9 +17,9 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rekest.controllers.GestionnaireRootLayoutController">
    <left>
-      <AnchorPane prefHeight="750.0" prefWidth="300.0" styleClass="sidebar" stylesheets="@../assets/css/style.css" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="550.0" prefWidth="300.0" styleClass="sidebar" stylesheets="@../assets/css/style.css" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="750.0" prefWidth="300.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <VBox prefHeight="550.4" prefWidth="300.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0" styleClass="profil">
                      <children>
@@ -79,11 +79,11 @@
       </AnchorPane>
    </left>
    <top>
-      <AnchorPane prefHeight="50.0" prefWidth="1300.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER_RIGHT" prefHeight="50.4" prefWidth="1300.0" styleClass="topbar" stylesheets="@../assets/css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="50.4" prefWidth="1200.0" styleClass="topbar" stylesheets="@../assets/css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="650.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="900.0">
                      <children>
                         <ImageView fx:id="imageLogo" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -100,7 +100,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="650.0">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="300.0">
                      <children>
                         <ButtonBar prefHeight="50.0" prefWidth="650.0">
                            <buttons>
@@ -136,6 +136,6 @@
       </AnchorPane>
    </top>
    <center>
-      <AnchorPane fx:id="anchorPaneCenter" prefHeight="750.0" prefWidth="1000.0" BorderPane.alignment="CENTER" />
+      <AnchorPane fx:id="anchorPaneCenter" prefHeight="550.0" prefWidth="900.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

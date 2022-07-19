@@ -17,13 +17,16 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rekest.controllers.AdminRootLayoutController">
    <left>
-      <AnchorPane prefHeight="750.0" prefWidth="300.0" styleClass="sidebar" stylesheets="@../assets/css/style.css" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="550.0" prefWidth="300.0" styleClass="sidebar" stylesheets="@../assets/css/style.css" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="750.4" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <VBox prefHeight="550.4" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0" styleClass="profil">
+                  <VBox alignment="CENTER" prefHeight="150.0" prefWidth="300.0" styleClass="profil">
                      <children>
-                        <Circle fx:id="circleProfil" fill="#52a4d1" radius="53.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="circleProfil" fill="#52a4d1" radius="53.0" stroke="BLACK" strokeType="INSIDE">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin></Circle>
                         <Label fx:id="labelUsername" text="Username" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
@@ -33,6 +36,9 @@
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
                         </Label>
                      </children>
                   </VBox>
@@ -50,7 +56,7 @@
                         </Button>
                      </children>
                      <VBox.margin>
-                        <Insets bottom="5.0" top="20.0" />
+                        <Insets top="5.0" />
                      </VBox.margin>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -70,7 +76,7 @@
                         </Button>
                      </children>
                      <VBox.margin>
-                        <Insets bottom="5.0" />
+                        <Insets />
                      </VBox.margin>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -90,7 +96,7 @@
                         </Button>
                      </children>
                      <VBox.margin>
-                        <Insets bottom="5.0" />
+                        <Insets />
                      </VBox.margin>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -110,7 +116,7 @@
                         </Button>
                      </children>
                      <VBox.margin>
-                        <Insets bottom="5.0" />
+                        <Insets />
                      </VBox.margin>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -130,7 +136,7 @@
                         </Button>
                      </children>
                      <VBox.margin>
-                        <Insets bottom="5.0" />
+                        <Insets />
                      </VBox.margin>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -150,7 +156,7 @@
                         </Button>
                      </children>
                      <VBox.margin>
-                        <Insets bottom="5.0" />
+                        <Insets />
                      </VBox.margin>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -170,7 +176,7 @@
                         </Button>
                      </children>
                      <VBox.margin>
-                        <Insets bottom="5.0" />
+                        <Insets />
                      </VBox.margin>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -190,7 +196,7 @@
                         </Button>
                      </children>
                      <VBox.margin>
-                        <Insets bottom="5.0" />
+                        <Insets />
                      </VBox.margin>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -212,6 +218,9 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
                   </HBox>
                </children>
             </VBox>
@@ -219,11 +228,11 @@
       </AnchorPane>
    </left>
    <top>
-      <AnchorPane prefHeight="50.0" prefWidth="1500.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER_RIGHT" prefHeight="50.4" prefWidth="1300.0" styleClass="topbar" stylesheets="@../assets/css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="50.4" prefWidth="1200.0" styleClass="topbar" stylesheets="@../assets/css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="1137.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="949.0">
                      <children>
                         <ImageView fx:id="imageLogo" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -240,7 +249,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="400.0">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="300.0">
                      <children>
                         <ButtonBar prefHeight="46.0" prefWidth="275.0">
                            <buttons>
@@ -276,6 +285,6 @@
       </AnchorPane>
    </top>
    <center>
-      <AnchorPane fx:id="anchorPaneCenter" prefHeight="750.0" prefWidth="1200.0" BorderPane.alignment="CENTER" />
+      <AnchorPane fx:id="anchorPaneCenter" prefHeight="550.0" prefWidth="900.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

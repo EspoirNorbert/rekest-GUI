@@ -17,11 +17,11 @@
 
 <AnchorPane stylesheets="@../assets/css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rekest.controllers.DemandeController">
    <children>
-      <VBox layoutX="238.0" layoutY="-1.0" prefHeight="750.4" prefWidth="1040.0" styleClass="parent" stylesheets="@../assets/css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox layoutX="238.0" layoutY="-1.0" prefHeight="550.4" prefWidth="940.0" styleClass="parent" stylesheets="@../assets/css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="1000.0" style="-fx-border-color: #D8DBDE;" styleClass="authcolor">
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="900.0" style="-fx-border-color: #D8DBDE;" styleClass="authcolor">
                <VBox.margin>
-                  <Insets bottom="30.0" left="20.0" right="20.0" top="20.0" />
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </VBox.margin>
                <children>
                   <Label alignment="TOP_LEFT" prefHeight="27.0" prefWidth="137.0" text="Demandes">
@@ -50,7 +50,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1000.0">
+            <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="900.0">
                <children>
                   <Label text="Total Demande : ">
                      <font>
@@ -58,7 +58,7 @@
                      </font></Label>
                   <Label fx:id="countDemande" text="Count">
                      <HBox.margin>
-                        <Insets left="5.0" right="370.0" />
+                        <Insets left="5.0" right="265.0" />
                      </HBox.margin>
                      <font>
                         <Font name="System Bold" size="14.0" />
@@ -92,10 +92,10 @@
                      </cursor></ComboBox>
                </children>
                <VBox.margin>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
                </VBox.margin>
             </HBox>
-            <TableView fx:id="tableViewDemandes" prefHeight="400.0" prefWidth="1000.0">
+            <TableView fx:id="tableViewDemandes" prefHeight="400.0" prefWidth="900.0">
               <columns>
                 <TableColumn fx:id="columnReference" prefWidth="75.0" text="Reference" />
                 <TableColumn fx:id="colomnProduitID" prefWidth="75.0" text="Produit_ID" />
@@ -106,18 +106,18 @@
                   <TableColumn fx:id="columnEtat" prefWidth="75.0" text="Etat" />
               </columns>
                <VBox.margin>
-                  <Insets bottom="30.0" left="20.0" right="20.0" />
+                  <Insets bottom="20.0" left="20.0" right="20.0" />
                </VBox.margin>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1000.0">
+            <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="900.0">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />
                </VBox.margin>
                <children>
-                  <ButtonBar prefHeight="46.0" prefWidth="1018.0">
+                  <ButtonBar prefHeight="46.0" prefWidth="900.0">
                      <buttons>
                         <Button fx:id="btnSoumettre" mnemonicParsing="false" onAction="#handleClickedSoumettre" styleClass="defaultbtns" text="Soumettre">
                            <font>
@@ -196,7 +196,7 @@
                         </Button>
                      </buttons>
                      <HBox.margin>
-                        <Insets bottom="5.0" />
+                        <Insets bottom="10.0" />
                      </HBox.margin>
                   </ButtonBar>
                </children>

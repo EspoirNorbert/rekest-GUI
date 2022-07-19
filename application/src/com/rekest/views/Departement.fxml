@@ -16,11 +16,11 @@
 
 <AnchorPane styleClass="parent" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rekest.controllers.DepartementController">
    <children>
-      <VBox layoutX="238.0" layoutY="-1.0" prefHeight="750.4" prefWidth="1040.0" styleClass="parent" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox layoutX="238.0" layoutY="-1.0" prefHeight="550.4" prefWidth="940.0" styleClass="parent" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="1000.0" style="-fx-border-color: #D8DBDE;" styleClass="authcolor">
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="900.0" style="-fx-border-color: #D8DBDE;" styleClass="authcolor">
                <VBox.margin>
-                  <Insets bottom="30.0" left="20.0" right="20.0" top="20.0" />
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </VBox.margin>
                <children>
                   <Label alignment="TOP_LEFT" prefHeight="35.0" prefWidth="238.0" text="Départements">
@@ -33,7 +33,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1000.0">
+            <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="900.0">
                <children>
                   <Label text="Total Départements : ">
                      <font>
@@ -45,7 +45,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                      <HBox.margin>
-                        <Insets right="395.0" />
+                        <Insets right="285.0" />
                      </HBox.margin>
                   </Label>
                   <TextField fx:id="textRecherche" prefHeight="30.0" prefWidth="200.0" promptText="Entrer le nom du département" style="-fx-background-color: white; -fx-border-color: #D8DBDE;" styleClass="search">
@@ -89,19 +89,19 @@
                   <Insets bottom="20.0" left="20.0" right="20.0" />
                </VBox.margin>
             </HBox>
-            <TableView fx:id="tableViewDepartement" prefHeight="400.0" prefWidth="1000.0">
+            <TableView fx:id="tableViewDepartement" prefHeight="400.0" prefWidth="900.0">
               <columns>
                 <TableColumn fx:id="columnNom" prefWidth="75.0" text="Nom" />
                   <TableColumn fx:id="columnChefDepartement" prefWidth="75.0" text="Chef de département" />
               </columns>
                <VBox.margin>
-                  <Insets bottom="30.0" left="20.0" right="20.0" />
+                  <Insets bottom="20.0" left="20.0" right="20.0" />
                </VBox.margin>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1000.0">
+            <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="900.0">
                <VBox.margin>
                   <Insets bottom="10.0" left="20.0" right="20.0" />
                </VBox.margin>
