@@ -25,10 +25,6 @@
 	-fx-border-width: 0px 0px 1px 0px;
 }
 
-.jfxbutton{
-	-fx-color: black;
-}
-
 .rounded {
     -fx-border-radius: 20 20 20 20;
     -fx-background-radius: 20 20 20 20;
@@ -40,15 +36,19 @@
 
 .btns:hover{
 	-fx-background-color: #202332;
+	-fx-border-width : 0px 0px 0px 5px;
+	-fx-border-color: #F30000;
 } 
-
-.active{
-	-fx-background-color: #202332;
-}
 
 .box {
 	-fx-border-color: #D8DBDE;
 	-fx-border-width: 1px 0px 0px 0px;
+}
+
+.textfield {
+	-fx-background-color: transparent;
+	-fx-border-width: 0px 0px 1px 0px;
+	-fx-border-color: black;
 }
 
 .rcorners {
@@ -58,4 +58,73 @@
 
 .authcolor{
 	-fx-background-color: white;
+}
+
+.btnauth {	
+	-fx-font-weigth: bold;
+	-fx-background-color: white;
+	-fx-background-radius: 22;
+	-fx-font-size: 16;
+	-fx-text-fill: #86C7ED;
+	-fx-border-color: #86C7ED;
+	-fx-border-radius: 20;
+	-fx-border-width: 3;
+}
+
+.btnauth:hover {
+	-fx-font-weigth: bold;
+	-fx-background-color: #86C7ED;
+	-fx-background-radius: 22;
+	-fx-font-size: 16;
+	-fx-text-fill: white;
+}
+
+.selected {
+	-fx-background-color: #F4F4F4;
+	-fx-border-width : 0px 0px 0px 5px;
+	-fx-border-color: #F30000;
+}
+
+.defaultbtns {
+    -fx-padding: 5 22 5 22;   
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 2;
+    -fx-background-radius: 22;
+    -fx-background-color: #1836B2;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 14;
+    -fx-text-fill: #d8d8d8;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.defaultbtns:hover {
+    -fx-background-color: #A066CB;
+}
+
+.defaultbtns:pressed, .defaultbtns:default:hover:pressed {
+  -fx-background-color: white;
+  -fx-text-fill: #81ac49;
+}
+
+.defaultbtns:focused {
+    -fx-border-color: white, white;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid, segments(1, 1);
+    -fx-border-radius: 0, 0;
+    -fx-border-insets: 1 1 1 1, 0;
+}
+
+.defaultbtns:disabled, .defaultbtns:default:disabled {
+    -fx-opacity: 0.4 ;
+    -fx-background-color: #81ac49;
+    -fx-text-fill: white;
+}
+
+.defaultbtns:default {
+    -fx-background-color: -fx-focus-color;
+    -fx-text-fill: #ffffff;
+}
+
+.defaultbtns:default:hover {
+    -fx-background-color: derive(-fx-focus-color,30%);
 }

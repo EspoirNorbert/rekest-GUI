@@ -93,7 +93,7 @@
                   </VBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="500.0">
                      <children>
-                        <Button fx:id="btnConnexion" mnemonicParsing="false" onAction="#handleClickedConnexion" prefHeight="40.0" prefWidth="250.0" text="Connexion">
+                        <Button fx:id="btnConnexion" mnemonicParsing="false" onAction="#handleClickedConnexion" prefHeight="40.0" prefWidth="250.0" styleClass="btnauth" stylesheets="@../assets/css/style.css" text="Connexion">
                            <HBox.margin>
                               <Insets left="30.0" right="30.0" />
                            </HBox.margin>
@@ -101,10 +101,10 @@
                               <Font size="20.0" />
                            </font>
                            <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
+                              <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="btnQuitter" mnemonicParsing="false" onAction="#handleClickedQuitter" prefHeight="40.0" prefWidth="250.0" text="Quitter">
+                        <Button fx:id="btnQuitter" mnemonicParsing="false" onAction="#handleClickedQuitter" prefHeight="40.0" prefWidth="250.0" styleClass="btnauth" stylesheets="@../assets/css/style.css" text="Quitter">
                            <HBox.margin>
                               <Insets right="30.0" />
                            </HBox.margin>
@@ -112,7 +112,7 @@
                               <Font size="20.0" />
                            </font>
                            <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
+                              <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
                      </children>
@@ -123,6 +123,9 @@
                            <HBox.margin>
                               <Insets right="30.0" />
                            </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
                      </children>
                   </HBox>

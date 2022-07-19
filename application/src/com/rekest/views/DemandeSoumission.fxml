@@ -2,6 +2,7 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ComboBox?>
@@ -72,21 +73,27 @@
             </GridPane>
             <ButtonBar prefHeight="40.0" prefWidth="300.0">
                <buttons>
-                  <Button fx:id="btnSoumettre" mnemonicParsing="false" onAction="#handleClickedSoumettre" text="Soumettre">
+                  <Button fx:id="btnSoumettre" mnemonicParsing="false" onAction="#handleClickedSoumettre" styleClass="defaultbtns" text="Soumettre">
                      <font>
                         <Font size="14.0" />
                      </font>
                      <graphic>
                         <FontAwesomeIconView glyphName="PLUS" />
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
-                  <Button fx:id="btnAnnuler" mnemonicParsing="false" onAction="#handleClickedRejecter" text="Annuler">
+                  <Button fx:id="btnAnnuler" mnemonicParsing="false" onAction="#handleClickedRejecter" styleClass="defaultbtns" text="Annuler">
                      <font>
                         <Font size="14.0" />
                      </font>
                      <graphic>
                         <FontAwesomeIconView glyphName="TIMES" />
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </buttons>
                <VBox.margin>

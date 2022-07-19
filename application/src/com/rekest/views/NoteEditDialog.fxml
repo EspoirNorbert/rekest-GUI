@@ -2,6 +2,7 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
@@ -49,29 +50,38 @@
                <children>
                   <ButtonBar prefHeight="46.0" prefWidth="667.0">
                      <buttons>
-                        <Button fx:id="btnSoumettre" mnemonicParsing="false" onAction="#handleClickedSoumettre" text="Emettre">
+                        <Button fx:id="btnSoumettre" mnemonicParsing="false" onAction="#handleClickedSoumettre" styleClass="defaultbtns" text="Emettre">
                            <font>
                               <Font size="14.0" />
                            </font>
                            <graphic>
                               <FontAwesomeIconView glyphName="PLUS" />
                            </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
-                        <Button fx:id="btnCloturer" layoutX="202.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleClickedCloturer" text="Fermer">
+                        <Button fx:id="btnCloturer" layoutX="202.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleClickedCloturer" styleClass="defaultbtns" text="Fermer">
                            <font>
                               <Font size="14.0" />
                            </font>
                            <graphic>
                               <FontAwesomeIconView glyphName="CLOSE" />
                            </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
-                        <Button fx:id="btnCloturer1" mnemonicParsing="false" onAction="#handleClickedCloturer" text="Annuler">
+                        <Button fx:id="btnCloturer1" mnemonicParsing="false" onAction="#handleClickedCloturer" styleClass="defaultbtns" text="Annuler">
                            <font>
                               <Font size="14.0" />
                            </font>
                            <graphic>
                               <FontAwesomeIconView glyphName="CLOSE" />
                            </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
                      </buttons>
                      <HBox.margin>

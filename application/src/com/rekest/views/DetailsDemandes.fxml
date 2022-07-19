@@ -2,6 +2,7 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -45,7 +46,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnSoumettre" mnemonicParsing="false" onAction="#handleClickedSoumettre" prefHeight="30.0" prefWidth="128.0" text="Ajouter Notes">
+                  <Button fx:id="btnSoumettre" mnemonicParsing="false" onAction="#handleClickedSoumettre" prefHeight="33.0" prefWidth="172.0" styleClass="defaultbtns" text="Ajouter Notes">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -55,6 +56,9 @@
                      <HBox.margin>
                         <Insets left="337.0" />
                      </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
             </HBox>
