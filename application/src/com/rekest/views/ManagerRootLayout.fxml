@@ -15,15 +15,18 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rekest.controllers.ManagerRootLayoutController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rekest.controllers.ManagerRootLayoutController">
    <left>
-      <AnchorPane prefHeight="750.0" prefWidth="300.0" styleClass="sidebar" stylesheets="@../assets/css/style.css" BorderPane.alignment="CENTER">
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="300.0" styleClass="sidebar" stylesheets="@../assets/css/style.css" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="750.0" prefWidth="300.0" styleClass="sidebar" stylesheets="@../assets/css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="300.0" styleClass="sidebar" stylesheets="@../assets/css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0" styleClass="profil">
+                  <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" styleClass="profil">
                      <children>
-                        <Circle fx:id="circleProfil" fill="#52a4d1" radius="53.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="circleProfil" fill="#52a4d1" radius="45.0" stroke="BLACK" strokeType="INSIDE">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin></Circle>
                         <Label fx:id="labelUsername" text="Username" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
@@ -33,74 +36,81 @@
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
                         </Label>
                      </children>
                   </VBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" styleClass="btns">
+                  <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0">
                      <children>
-                        <FontAwesomeIconView glyphName="DASHBOARD" glyphStyle="-fx-fill:#7C8184" size="1.3em">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </FontAwesomeIconView>
-                        <Button fx:id="btnAccueil" mnemonicParsing="false" onMouseClicked="#handleClickedAccueil" style="-fx-background-color: transparent;" text="Accueil" textFill="#7c8184">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Button>
+                        <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" styleClass="btns">
+                           <children>
+                              <FontAwesomeIconView glyphName="DASHBOARD" glyphStyle="-fx-fill:#7C8184" size="1.3em">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </FontAwesomeIconView>
+                              <Button fx:id="btnAccueil" mnemonicParsing="false" onMouseClicked="#handleClickedAccueil" style="-fx-background-color: transparent;" text="Accueil" textFill="#7c8184">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" styleClass="btns">
+                           <children>
+                              <FontAwesomeIconView glyphName="CLONE" glyphStyle="-fx-fill:#7C8184" size="1.3em">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </FontAwesomeIconView>
+                              <Button fx:id="btnDemande" mnemonicParsing="false" onMouseClicked="#handleClickedDemande" style="-fx-background-color: transparent;" text="Demandes" textFill="#7c8184">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" styleClass="btns">
+                           <children>
+                              <FontAwesomeIconView glyphName="USER" glyphStyle="-fx-fill:#7C8184" size="1.3em">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </FontAwesomeIconView>
+                              <Button fx:id="btnProfil" mnemonicParsing="false" onMouseClicked="#handleClickedProfil" style="-fx-background-color: transparent;" text="Profil" textFill="#7c8184">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </HBox>
                      </children>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="100.0" prefHeight="40.0" prefWidth="200.0" styleClass="btns">
-                     <children>
-                        <FontAwesomeIconView glyphName="CLONE" glyphStyle="-fx-fill:#7C8184" size="1.3em">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </FontAwesomeIconView>
-                        <Button fx:id="btnDemande" mnemonicParsing="false" onMouseClicked="#handleClickedDemande" style="-fx-background-color: transparent;" text="Demandes" textFill="#7c8184">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Button>
-                     </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="140.0" prefHeight="40.0" prefWidth="200.0" styleClass="btns">
-                     <children>
-                        <FontAwesomeIconView glyphName="USER" glyphStyle="-fx-fill:#7C8184" size="1.3em">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </FontAwesomeIconView>
-                        <Button fx:id="btnProfil" mnemonicParsing="false" onMouseClicked="#handleClickedProfil" style="-fx-background-color: transparent;" text="Profil" textFill="#7c8184">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Button>
-                     </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </HBox>
+                  </VBox>
                </children>
             </VBox>
          </children>
       </AnchorPane>
    </left>
    <top>
-      <AnchorPane prefHeight="50.0" prefWidth="1300.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1250.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER_RIGHT" prefHeight="50.4" prefWidth="1300.0" styleClass="topbar" stylesheets="@../assets/css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1250.0" styleClass="topbar" stylesheets="@../assets/css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="650.0">
+                  <HBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="950.0">
                      <children>
                         <ImageView fx:id="imageLogo" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -117,7 +127,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="650.0">
+                  <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0">
                      <children>
                         <ButtonBar prefHeight="50.0" prefWidth="650.0">
                            <buttons>
@@ -153,6 +163,6 @@
       </AnchorPane>
    </top>
    <center>
-      <AnchorPane fx:id="anchorPaneCenter" prefHeight="750.0" prefWidth="1000.0" BorderPane.alignment="CENTER" />
+      <AnchorPane fx:id="anchorPaneCenter" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="950.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

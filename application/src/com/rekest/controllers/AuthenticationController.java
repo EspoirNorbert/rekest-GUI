@@ -111,4 +111,6 @@ public class AuthenticationController implements Initializable {
 		
 	}
 
+	public void showAuthenticationController() {}
+
 }

@@ -59,10 +59,10 @@ public class AdminRootLayoutController implements Initializable {
 	private Button btnNotifications;
 
 	@FXML
-	private Button btnParametre;
-
-	@FXML
 	private Button btnProduit;
+	
+    @FXML
+    private Button btnProfil;
 
 	@FXML
 	private Button btnRole;
@@ -70,6 +70,9 @@ public class AdminRootLayoutController implements Initializable {
 	@FXML
 	private Button btnService;
 
+    @FXML
+    private Button btnUtlisateurs;
+	
 	@FXML
 	private Circle circleProfil;
 
@@ -129,18 +132,15 @@ public class AdminRootLayoutController implements Initializable {
 		Utilitaire.loadPageInRootLayout(rootLayout, "Employes");
 	}
 
-
-	@FXML
-	void handleClickedParametre(MouseEvent event) {
-
-		Utilitaire.loadPageInRootLayout(rootLayout, "Parametres");
-
-	}
-
 	@FXML
 	void handleClickedProduit(MouseEvent event) {
 		Utilitaire.loadPageInRootLayout(rootLayout, "Produits");
 	}
+	
+    @FXML
+    void handleClickedProfil(MouseEvent event) {
+    	Utilitaire.loadPageInRootLayout(rootLayout, "Profil");
+    }
 
 	@FXML
 	void handleClickedRole(MouseEvent event) {
@@ -151,9 +151,16 @@ public class AdminRootLayoutController implements Initializable {
 	void handleClickedService(MouseEvent event) {
 		Utilitaire.loadPageInRootLayout(rootLayout, "Services");
 	}
+	
+    @FXML
+    void handleClickedUtilisateur(MouseEvent event) {
+    	Utilitaire.loadPageInRootLayout(rootLayout, "Utilisateurs");
+    }
 
 	@FXML
-	void handleClicledNotification(MouseEvent event) {}
+	void handleClicledNotification(MouseEvent event) {
+		Utilitaire.loadPageInRootLayout(rootLayout, "Notifications");
+	}
 
 	@FXML
 	void handleClickedLogOut(MouseEvent event) {

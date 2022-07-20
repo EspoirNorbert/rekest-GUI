@@ -121,7 +121,7 @@
                      <buttons>
                         <Button fx:id="btnSoumettre" mnemonicParsing="false" onAction="#handleClickedSoumettre" styleClass="defaultbtns" text="Soumettre">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="10.0" />
                            </font>
                            <graphic>
                               <FontAwesomeIconView glyphName="PLUS" />

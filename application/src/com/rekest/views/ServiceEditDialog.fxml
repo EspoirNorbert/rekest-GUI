@@ -12,11 +12,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #272924;" stylesheets="@../assets/css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rekest.controllers.ServiceEditDialogController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" style="-fx-background-color: #272924;" stylesheets="@../assets/css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rekest.controllers.ServiceEditDialogController">
    <children>
-      <VBox prefHeight="300.0" prefWidth="500.0" styleClass="parent" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" styleClass="parent" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="sidebar">
+            <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="500.0" styleClass="sidebar">
                <children>
                   <Label fx:id="labelService" text="Nouveau service" textFill="WHITE">
                      <font>
@@ -25,37 +25,50 @@
                   </Label>
                </children>
             </HBox>
-            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
+            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="450.0">
                <children>
                   <Label text="Nom">
-                     <padding>
-                        <Insets bottom="5.0" left="10.0" />
-                     </padding>
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="10.0" top="5.0" />
+                     </VBox.margin>
                   </Label>
                   <TextField fx:id="textFieldNom">
                      <VBox.margin>
                         <Insets bottom="25.0" left="10.0" right="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <Label text="Département associé">
-                     <padding>
-                        <Insets bottom="5.0" left="10.0" />
-                     </padding>
+                  <Label text="Chef de service">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="10.0" />
+                     </VBox.margin>
                   </Label>
                   <ComboBox fx:id="comboBoxDepartement" prefHeight="26.0" prefWidth="502.0">
                      <VBox.margin>
                         <Insets bottom="15.0" left="10.0" right="10.0" />
                      </VBox.margin>
                   </ComboBox>
+                  <Label layoutX="10.0" layoutY="96.0" text="Département associé">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <ComboBox fx:id="comboBoxDepartement1" layoutX="20.0" layoutY="128.0" prefHeight="26.0" prefWidth="502.0">
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </ComboBox>
                </children>
                <VBox.margin>
-                  <Insets left="5.0" right="20.0" top="10.0" />
+                  <Insets left="5.0" right="20.0" />
                </VBox.margin>
             </VBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
@@ -74,7 +87,7 @@
                   </ButtonBar>
                </children>
                <VBox.margin>
-                  <Insets right="25.0" />
+                  <Insets bottom="10.0" right="25.0" />
                </VBox.margin>
             </HBox>
          </children>
